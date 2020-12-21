@@ -13,6 +13,6 @@ public class Restaurant {
     }
 
     public String getInformation() {
-        return "";
+        return "Bob zip in Seoul";
     }
 }
