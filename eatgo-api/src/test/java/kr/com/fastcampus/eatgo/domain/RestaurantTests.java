@@ -13,4 +13,11 @@ class RestaurantTests {
         Restaurant restaurant = new Restaurant("Bob zip");
         assertThat(restaurant.getName(), is("Bob zip"));
     }
+
+    @Test
+    public void information() {
+        Restaurant restaurant = new Restaurant("Bob zip", "Seoul");
+
+        assertThat(restaurant.getInformation(), "Bob zip in Seoul");
+    }
 }
