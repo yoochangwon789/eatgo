@@ -11,7 +11,9 @@ class RestaurantTests {
     @Test
     public void creation() {
         Restaurant restaurant = new Restaurant("Bob zip", "");
+
         assertThat(restaurant.getName(), is("Bob zip"));
+        assertThat(restaurant.getAddress(), is("Seoul"));
     }
 
     @Test
