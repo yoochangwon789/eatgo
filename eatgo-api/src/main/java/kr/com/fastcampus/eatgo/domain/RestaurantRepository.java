@@ -1,11 +1,16 @@
 package kr.com.fastcampus.eatgo.domain;
 
-
+import java.util.ArrayList;
 import java.util.List;
 
 public class RestaurantRepository {
 
     public List<Restaurant> findAll() {
-        return null;
+        List<Restaurant> restaurants = new ArrayList<>();
+
+        restaurants.add(new Restaurant(1004L, "Bob zip", "Seoul"));
+        restaurants.add(new Restaurant(2020L, "Cyber Food", "Seoul"));
+
+        return restaurants;
     }
 }
