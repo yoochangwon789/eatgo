@@ -15,9 +15,8 @@ public class RestaurantController {
     public List<Restaurant> list() {
         List<Restaurant> restaurants = new ArrayList<>();
 
-        Restaurant restaurant = new Restaurant(1004L, "Bob zip", "Seoul");
-
-        restaurants.add(restaurant);
+        restaurants.add(new Restaurant(1004L, "Bob zip", "Seoul"));
+        restaurants.add(new Restaurant(2020L, "Cyber Food", "Seoul"));
 
         return restaurants;
     }
