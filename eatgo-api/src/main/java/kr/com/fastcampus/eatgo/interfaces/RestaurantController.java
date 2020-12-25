@@ -1,6 +1,7 @@
 package kr.com.fastcampus.eatgo.interfaces;
 
 import kr.com.fastcampus.eatgo.domain.Restaurant;
+import kr.com.fastcampus.eatgo.domain.RestaurantRepository;
 import kr.com.fastcampus.eatgo.domain.RestaurantRepositoryImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,7 +14,7 @@ import java.util.List;
 public class RestaurantController {
 
     @Autowired
-    private RestaurantRepositoryImpl repository;
+    private RestaurantRepository repository;
 
     @GetMapping("/restaurants")
     public List<Restaurant> list() {

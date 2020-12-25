@@ -1,5 +1,6 @@
 package kr.com.fastcampus.eatgo.interfaces;
 
+import kr.com.fastcampus.eatgo.domain.RestaurantRepository;
 import kr.com.fastcampus.eatgo.domain.RestaurantRepositoryImpl;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
@@ -23,8 +24,8 @@ class RestaurantControllerTest {
     private MockMvc mvc;
 
     // SpyBean 이라는 어노탠션을 test 코드에 의존성을 주입시켜준다.
-    @SpyBean
-    private RestaurantRepositoryImpl restaurantRepository;
+    @SpyBean(RestaurantRepositoryImpl.class)
+    private RestaurantRepository restaurantRepository;
 
     @Test
     public void list() throws Exception {
