@@ -1,9 +1,11 @@
 package kr.com.fastcampus.eatgo.interfaces;
 
+import kr.com.fastcampus.eatgo.domain.RestaurantRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.mock.mockito.SpyBean;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
@@ -19,6 +21,10 @@ class RestaurantControllerTest {
 
     @Autowired
     private MockMvc mvc;
+
+    // SpyBean 이라는 어노탠션을 test 코드에 의존성을 주입시켜준다.
+    @SpyBean
+    private RestaurantRepository restaurantRepository;
 
     @Test
     public void list() throws Exception {
