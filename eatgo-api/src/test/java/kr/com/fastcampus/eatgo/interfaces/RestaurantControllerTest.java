@@ -40,7 +40,8 @@ class RestaurantControllerTest {
         mvc.perform(get("/restaurants/1004"))
                 .andExpect(status().isOk())
                 .andExpect(content().string(containsString("\"id\":1004")))
-                .andExpect(content().string(containsString("\"name\":\"Bob zip\"")));
+                .andExpect(content().string(containsString("\"name\":\"Bob zip\"")))
+                .andExpect(content().string(containsString("Kimchi")));
 
         mvc.perform(get("/restaurants/2020"))
                 .andExpect(status().isOk())

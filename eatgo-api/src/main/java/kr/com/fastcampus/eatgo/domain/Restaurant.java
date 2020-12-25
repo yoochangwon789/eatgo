@@ -27,4 +27,8 @@ public class Restaurant {
     public String getInformation() {
         return name + " in " + address;
     }
+
+    public void addMenuItem(MenuItem menuItem) {
+
+    }
 }
