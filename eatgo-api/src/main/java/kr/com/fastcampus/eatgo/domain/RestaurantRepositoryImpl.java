@@ -6,11 +6,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Component
-public class RestaurantRepository {
+public class RestaurantRepositoryImpl {
 
     private List<Restaurant> restaurants = new ArrayList<>();
 
-    public RestaurantRepository() {
+    public RestaurantRepositoryImpl() {
         restaurants.add(new Restaurant(1004L, "Bob zip", "Seoul"));
         restaurants.add(new Restaurant(2020L, "Cyber Food", "Seoul"));
     }
