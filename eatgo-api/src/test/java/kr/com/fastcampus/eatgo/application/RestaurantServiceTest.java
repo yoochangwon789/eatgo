@@ -1,8 +1,6 @@
 package kr.com.fastcampus.eatgo.application;
 
-import kr.com.fastcampus.eatgo.domain.Restaurant;
-import kr.com.fastcampus.eatgo.domain.RestaurantRepository;
-import kr.com.fastcampus.eatgo.domain.RestaurantRepositoryImpl;
+import kr.com.fastcampus.eatgo.domain.*;
 import org.junit.Before;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.mock.mockito.SpyBean;
@@ -19,6 +17,8 @@ public class RestaurantServiceTest {
 
     private RestaurantRepository restaurantRepository;
 
+    private MenuItemRepository menuItemRepository;
+
     //@Before
     //public void setUp() {
         //restaurantRepository = new RestaurantRepositoryImpl();
@@ -28,7 +28,8 @@ public class RestaurantServiceTest {
     @Test
     public void getRestaurants() {
         restaurantRepository = new RestaurantRepositoryImpl();
-        restaurantService = new RestaurantService(restaurantRepository);
+        restaurantService = new RestaurantService(restaurantRepository, menuItemRepository);
+
         List<Restaurant> restaurants = restaurantService.getRestaurants();
 
         Restaurant restaurant = restaurants.get(0);
@@ -38,9 +39,13 @@ public class RestaurantServiceTest {
     @Test
     public void getRestaurant() {
         restaurantRepository = new RestaurantRepositoryImpl();
-        restaurantService = new RestaurantService(restaurantRepository);
-        Restaurant restaurant = restaurantService.getRestaurant(1004L);
+        menuItemRepository = new MenuItemRepositoryImpl();
+        restaurantService = new RestaurantService(restaurantRepository,menuItemRepository);
 
+        Restaurant restaurant = restaurantService.getRestaurant(1004L);
         assertThat(restaurant.getId(), is(1004L));
+
+        MenuItem menuItem = restaurant.getMenuItems().get(0);
+        assertThat(menuItem.getName(), is("Kimchi"));
     }
 }

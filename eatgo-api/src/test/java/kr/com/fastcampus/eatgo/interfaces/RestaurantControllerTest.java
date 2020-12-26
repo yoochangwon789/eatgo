@@ -1,5 +1,6 @@
 package kr.com.fastcampus.eatgo.interfaces;
 
+import kr.com.fastcampus.eatgo.application.RestaurantService;
 import kr.com.fastcampus.eatgo.domain.MenuItemRepository;
 import kr.com.fastcampus.eatgo.domain.MenuItemRepositoryImpl;
 import kr.com.fastcampus.eatgo.domain.RestaurantRepository;
@@ -31,6 +32,9 @@ class RestaurantControllerTest {
 
     @SpyBean(MenuItemRepositoryImpl.class)
     private MenuItemRepository menuItemRepository;
+
+    @SpyBean(RestaurantService.class)
+    private RestaurantService restaurantService;
 
     @Test
     public void list() throws Exception {
