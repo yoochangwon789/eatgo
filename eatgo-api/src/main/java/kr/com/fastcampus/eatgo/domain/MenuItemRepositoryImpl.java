@@ -12,6 +12,7 @@ public class MenuItemRepositoryImpl implements MenuItemRepository {
 
     public MenuItemRepositoryImpl() {
         menuItems.add(new MenuItem("Kimchi"));
+        menuItems.add(new MenuItem("KimBab"));
     }
 
     @Override
