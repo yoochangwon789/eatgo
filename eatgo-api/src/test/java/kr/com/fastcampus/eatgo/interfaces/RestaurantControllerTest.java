@@ -16,9 +16,9 @@ import java.util.List;
 
 import static org.hamcrest.core.StringContains.containsString;
 import static org.mockito.BDDMockito.given;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 
 @RunWith(SpringRunner.class) // 요청을 위해서 springRunner 에게 요청
@@ -69,5 +69,12 @@ class RestaurantControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(content().string(containsString("\"id\":2020")))
                 .andExpect(content().string(containsString("\"name\":\"Cyber Food\"")));
+    }
+
+    @Test
+    public void create() throws Exception {
+        mvc.perform(post("/restaurant"))
+                .andExpect(status().isCreated())
+                .andExpect(header().string("location", "/restaurants/1234"));
     }
 }
