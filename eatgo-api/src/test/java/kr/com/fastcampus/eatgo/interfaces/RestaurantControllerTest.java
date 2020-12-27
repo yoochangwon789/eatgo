@@ -73,7 +73,7 @@ class RestaurantControllerTest {
 
     @Test
     public void create() throws Exception {
-        mvc.perform(post("/restaurant"))
+        mvc.perform(post("/restaurants"))
                 .andExpect(status().isCreated())
                 .andExpect(header().string("location", "/restaurants/1234"));
     }
