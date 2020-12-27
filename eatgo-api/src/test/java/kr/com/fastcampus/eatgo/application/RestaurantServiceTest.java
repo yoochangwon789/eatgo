@@ -80,4 +80,14 @@ public class RestaurantServiceTest {
         MenuItem menuItem = restaurant.getMenuItems().get(0);
         assertThat(menuItem.getName(), is("Kimchi"));
     }
+
+    @Test
+    public void addRestaurant() {
+        restaurantService = new RestaurantService(restaurantRepository, menuItemRepository);
+
+        Restaurant restaurant = new Restaurant("BeRyong", "Busan");
+        Restaurant created = restaurantService.addRestaurant(restaurant);
+
+        assertThat(created.getId(), is(1234L));
+    }
 }
