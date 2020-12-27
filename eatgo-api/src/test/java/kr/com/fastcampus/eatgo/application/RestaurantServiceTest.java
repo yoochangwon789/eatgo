@@ -41,10 +41,16 @@ public class RestaurantServiceTest {
         Restaurant restaurant = new Restaurant(1004L, "Bob zip", "Seoul");
         restaurants.add(restaurant);
         given(restaurantRepository.findAll()).willReturn(restaurants);
+    }
 
-        Restaurant restaurant2 = new Restaurant(1004L, "Bob zip", "Seoul");
-        restaurant2.addMenuItem(new MenuItem("Kimchi"));
-        given(restaurantRepository.findById(1004L)).willReturn(restaurant2);
+    private void mockMenuItemRepository() {
+        MockitoAnnotations.initMocks(this);
+
+        restaurantService = new RestaurantService(restaurantRepository, menuItemRepository);
+
+        Restaurant restaurant = new Restaurant(1004L, "Bob zip", "Seoul");
+        restaurant.addMenuItem(new MenuItem("Kimchi"));
+        given(restaurantRepository.findById(1004L)).willReturn(restaurant);
     }
 
     @Test
@@ -66,7 +72,7 @@ public class RestaurantServiceTest {
         //menuItemRepository = new MenuItemRepositoryImpl();
         //restaurantService = new RestaurantService(restaurantRepository,menuItemRepository);
 
-        mockRestaurantRepository();
+        mockMenuItemRepository();
 
         Restaurant restaurant = restaurantService.getRestaurant(1004L);
         assertThat(restaurant.getId(), is(1004L));
