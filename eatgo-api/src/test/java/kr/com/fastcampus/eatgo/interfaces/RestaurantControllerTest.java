@@ -38,15 +38,15 @@ class RestaurantControllerTest {
 
     @Test
     public void list() throws Exception {
-        // 우리가 given 을 통해 Service 를 실행한 후에 restaurants 의 값을 리턴 받을 것이다.
+        // 우리가 given 을 통해 Service 를 실행한 후에 restaurants 의 값을 리턴 받을 것이다. 가짜 처리를 통해 test 코드를 적용시킨다
         List<Restaurant> restaurants = new ArrayList<>();
-        restaurants.add(new Restaurant(1004L, "Bob zip", "Seoul"));
+        restaurants.add(new Restaurant(1004L, "JOKER House", "Seoul"));
         given(restaurantService.getRestaurants()).willReturn(restaurants);
 
         mvc.perform(get("/restaurants"))
                 .andExpect(status().isOk())
                 .andExpect(content().string(containsString("\"id\":1004")))
-                .andExpect(content().string(containsString("\"name\":\"Bob zip\"")));
+                .andExpect(content().string(containsString("\"name\":\"JOKER House\"")));
     }
 
     @Test
