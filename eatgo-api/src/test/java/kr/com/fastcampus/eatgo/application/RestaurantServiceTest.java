@@ -86,7 +86,6 @@ public class RestaurantServiceTest {
     @Test
     public void addRestaurant() {
         MockitoAnnotations.initMocks(this);
-
         restaurantService = new RestaurantService(restaurantRepository, menuItemRepository);
 
         Restaurant restaurant = new Restaurant("BeRyong", "Busan");
