@@ -1,6 +1,7 @@
 package kr.com.fastcampus.eatgo.domain;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Transient;
 import java.util.ArrayList;
@@ -10,6 +11,7 @@ import java.util.List;
 public class Restaurant {
 
     @Id
+    @GeneratedValue
     private Long id;
 
     private String name;
