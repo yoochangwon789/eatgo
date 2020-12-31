@@ -40,7 +40,14 @@ public class RestaurantServiceTest {
         restaurantService = new RestaurantService(restaurantRepository, menuItemRepository);
 
         List<Restaurant> restaurants = new ArrayList<>();
-        Restaurant restaurant = new Restaurant(1004L, "Bob zip", "Seoul");
+
+        Restaurant restaurant = Restaurant.builder()
+                .id(1004L)
+                .address("Seoul")
+                .name("Bob zip")
+                .menuItems(new ArrayList<MenuItem>())
+                .build();
+
         restaurants.add(restaurant);
 
         given(restaurantRepository.findAll()).willReturn(restaurants);
