@@ -1,21 +1,23 @@
 package kr.com.fastcampus.eatgo.application;
 
-import kr.com.fastcampus.eatgo.domain.*;
-import org.junit.Before;
+import kr.com.fastcampus.eatgo.domain.MenuItem;
+import kr.com.fastcampus.eatgo.domain.MenuItemRepository;
+import kr.com.fastcampus.eatgo.domain.Restaurant;
+import kr.com.fastcampus.eatgo.domain.RestaurantRepository;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import org.springframework.boot.test.mock.mockito.SpyBean;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.BDDMockito.given;
+
 
 public class RestaurantServiceTest {
 
@@ -29,8 +31,8 @@ public class RestaurantServiceTest {
 
     //@Before
     //public void setUp() {
-        //restaurantRepository = new RestaurantRepositoryImpl();
-        //restaurantService = new RestaurantService(restaurantRepository);
+    //restaurantRepository = new RestaurantRepositoryImpl();
+    //restaurantService = new RestaurantService(restaurantRepository);
     //}
 
     private void mockRestaurantRepository() {
@@ -40,14 +42,11 @@ public class RestaurantServiceTest {
         restaurantService = new RestaurantService(restaurantRepository, menuItemRepository);
 
         List<Restaurant> restaurants = new ArrayList<>();
-
         Restaurant restaurant = Restaurant.builder()
                 .id(1004L)
-                .address("Seoul")
                 .name("Bob zip")
-                .menuItems(new ArrayList<MenuItem>())
+                .address("Seoul")
                 .build();
-
         restaurants.add(restaurant);
 
         given(restaurantRepository.findAll()).willReturn(restaurants);
@@ -59,8 +58,13 @@ public class RestaurantServiceTest {
         restaurantService = new RestaurantService(restaurantRepository, menuItemRepository);
 
         Restaurant restaurant = new Restaurant(1004L, "Bob zip", "Seoul");
-        restaurant.addMenuItem(new MenuItem("Kimchi"));
+        //restaurant.setMenuItem(Arrays.asList(new MenuItem("Kimchi")));
+
+        List<MenuItem> menuItems = new ArrayList<>();
+        menuItems.add(new MenuItem("Kimchi"));
+
         given(restaurantRepository.findById(1004L)).willReturn(Optional.of(restaurant));
+        given(menuItemRepository.findAllByRestaurantId(1004L)).willReturn(menuItems);
     }
 
     @Test
