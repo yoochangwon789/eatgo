@@ -25,6 +25,12 @@ public class Restaurant {
 
     private String address;
 
+    private String regionName; // Seoul
+
+    private String categoryName;    // Korean
+
+    private String tagNames;    // #JMT
+
     // 임시로 처리해 주는 기능
     @Transient
     private List<MenuItem> menuItems = new ArrayList<>();
