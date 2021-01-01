@@ -1,14 +1,12 @@
 package kr.com.fastcampus.eatgo.interfaces;
 
 import kr.com.fastcampus.eatgo.application.RestaurantService;
-import kr.com.fastcampus.eatgo.domain.MenuItem;
-import kr.com.fastcampus.eatgo.domain.MenuItemRepository;
 import kr.com.fastcampus.eatgo.domain.Restaurant;
-import kr.com.fastcampus.eatgo.domain.RestaurantRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
@@ -41,7 +39,7 @@ public class RestaurantController {
     }
 
     @PostMapping("/restaurants")
-    public ResponseEntity<?> create(@RequestBody Restaurant resource) throws URISyntaxException {
+    public ResponseEntity<?> create(@Valid @RequestBody Restaurant resource) throws URISyntaxException {
         Restaurant restaurant = Restaurant.builder()
                 .id(1234L)
                 .name(resource.getName())
