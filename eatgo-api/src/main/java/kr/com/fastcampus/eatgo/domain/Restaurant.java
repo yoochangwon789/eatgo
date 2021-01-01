@@ -18,6 +18,7 @@ public class Restaurant {
 
     @Id
     @GeneratedValue
+    @Setter
     private Long id;
 
     private String name;

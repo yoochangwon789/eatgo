@@ -101,18 +101,16 @@ public class RestaurantServiceTest {
         MockitoAnnotations.initMocks(this);
         restaurantService = new RestaurantService(restaurantRepository, menuItemRepository);
 
+        given(restaurantRepository.save(any())).will(invocation -> {
+            Restaurant restaurant = invocation.getArgument(0);
+            restaurant.setId(1234L);
+            return restaurant;
+        });
+
         Restaurant restaurant = Restaurant.builder()
                 .name("BeRyong")
                 .address("Busan")
                 .build();
-
-        Restaurant saved = Restaurant.builder()
-                .id(1234L)
-                .name("BeRyong")
-                .address("Busan")
-                .build();
-
-        given(restaurantRepository.save(any())).willReturn(saved);
 
         Restaurant created = restaurantService.addRestaurant(restaurant);
 
