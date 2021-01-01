@@ -65,7 +65,9 @@ public class RestaurantServiceTest {
         //restaurant.setMenuItem(Arrays.asList(new MenuItem("Kimchi")));
 
         List<MenuItem> menuItems = new ArrayList<>();
-        menuItems.add(new MenuItem("Kimchi"));
+        menuItems.add(MenuItem.builder()
+                .name("Kimchi")
+                .build());
 
         given(restaurantRepository.findById(1004L)).willReturn(Optional.of(restaurant));
         given(menuItemRepository.findAllByRestaurantId(1004L)).willReturn(menuItems);

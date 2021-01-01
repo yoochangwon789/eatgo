@@ -63,7 +63,9 @@ class RestaurantControllerTest {
                 .name("JOKER House")
                 .address("Seoul")
                 .build();
-        restaurant.setMenuItem(Arrays.asList(new MenuItem("Kimchi")));
+        restaurant.setMenuItem(Arrays.asList(MenuItem.builder()
+                .name("Kimchi")
+                .build()));
         given(restaurantService.getRestaurant(1004L)).willReturn(restaurant);
 
         mvc.perform(get("/restaurants/1004"))
@@ -77,7 +79,9 @@ class RestaurantControllerTest {
                 .name("Cyber Food")
                 .address("Seoul")
                 .build();
-        restaurant.setMenuItem(Arrays.asList(new MenuItem("Kimchi")));
+        restaurant.setMenuItem(Arrays.asList(MenuItem.builder()
+                .name("Kimchi")
+                .build()));
         given(restaurantService.getRestaurant(2020L)).willReturn(restaurant2);
 
         mvc.perform(get("/restaurants/2020"))
