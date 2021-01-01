@@ -58,7 +58,11 @@ class RestaurantControllerTest {
 
     @Test
     public void detail() throws Exception {
-        Restaurant restaurant = new Restaurant(1004L, "JOKER House", "Seoul");
+        Restaurant restaurant = Restaurant.builder()
+                .id(1004L)
+                .name("JOKER House")
+                .address("Seoul")
+                .build();
         restaurant.setMenuItem(Arrays.asList(new MenuItem("Kimchi")));
         given(restaurantService.getRestaurant(1004L)).willReturn(restaurant);
 
@@ -68,7 +72,11 @@ class RestaurantControllerTest {
                 .andExpect(content().string(containsString("\"name\":\"JOKER House\"")))
                 .andExpect(content().string(containsString("Kimchi")));
 
-        Restaurant restaurant2 = new Restaurant(2020L, "Cyber Food", "Seoul");
+        Restaurant restaurant2 = Restaurant.builder()
+                .id(2020L)
+                .name("Cyber Food")
+                .address("Seoul")
+                .build();
         restaurant.setMenuItem(Arrays.asList(new MenuItem("Kimchi")));
         given(restaurantService.getRestaurant(2020L)).willReturn(restaurant2);
 
