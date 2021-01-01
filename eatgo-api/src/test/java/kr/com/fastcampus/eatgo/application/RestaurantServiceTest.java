@@ -90,6 +90,7 @@ public class RestaurantServiceTest {
 
         Restaurant restaurant = restaurantService.getRestaurant(1004L);
         assertThat(restaurant.getId(), is(1004L));
+        assertThat(restaurant.getName(), is("Bob zip"));
 
         MenuItem menuItem = restaurant.getMenuItems().get(0);
         assertThat(menuItem.getName(), is("Kimchi"));
@@ -100,8 +101,16 @@ public class RestaurantServiceTest {
         MockitoAnnotations.initMocks(this);
         restaurantService = new RestaurantService(restaurantRepository, menuItemRepository);
 
-        Restaurant restaurant = new Restaurant("BeRyong", "Busan");
-        Restaurant saved = new Restaurant(1234L, "BeRyong", "Busan");
+        Restaurant restaurant = Restaurant.builder()
+                .name("BeRyong")
+                .address("Busan")
+                .build();
+
+        Restaurant saved = Restaurant.builder()
+                .id(1234L)
+                .name("BeRyong")
+                .address("Busan")
+                .build();
 
         given(restaurantRepository.save(any())).willReturn(saved);
 
