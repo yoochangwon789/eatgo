@@ -57,7 +57,11 @@ public class RestaurantServiceTest {
 
         restaurantService = new RestaurantService(restaurantRepository, menuItemRepository);
 
-        Restaurant restaurant = new Restaurant(1004L, "Bob zip", "Seoul");
+        Restaurant restaurant = Restaurant.builder()
+                .id(1004L)
+                .name("Bob zip")
+                .address("Seoul")
+                .build();
         //restaurant.setMenuItem(Arrays.asList(new MenuItem("Kimchi")));
 
         List<MenuItem> menuItems = new ArrayList<>();
