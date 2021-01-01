@@ -122,7 +122,11 @@ public class RestaurantServiceTest {
         MockitoAnnotations.initMocks(this);
         restaurantService = new RestaurantService(restaurantRepository, menuItemRepository);
 
-        Restaurant restaurant = new Restaurant(1004L, "Bob zip", "Seoul");
+        Restaurant restaurant = Restaurant.builder()
+                .id(1004L)
+                .name("Bob zip")
+                .address("Seoul")
+                .build();
         given(restaurantRepository.findById(1004L)).willReturn(Optional.of(restaurant));
 
         restaurantService.updateRestaurant(1004L, "Sool zip", "Busan");
