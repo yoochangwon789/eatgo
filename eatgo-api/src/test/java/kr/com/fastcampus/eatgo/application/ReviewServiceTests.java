@@ -1,20 +1,31 @@
 package kr.com.fastcampus.eatgo.application;
 
 import kr.com.fastcampus.eatgo.domain.Review;
+import kr.com.fastcampus.eatgo.domain.ReviewRepository;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.verify;
 
 class ReviewServiceTests {
 
     private ReviewService reviewService;
 
+    @Mock
+    private ReviewRepository reviewRepository;
+
     public void setReviewServiceUp() {
-        reviewService = new ReviewService();
+        MockitoAnnotations.initMocks(this);
+
+        reviewService = new ReviewService(reviewRepository);
     }
 
     @Test
     public void addReview() {
+        setReviewServiceUp();
+
         Review review = Review.builder()
                 .name("JOKER")
                 .score(3)
@@ -22,5 +33,7 @@ class ReviewServiceTests {
                 .build();
 
         reviewService.addReview(review);
+
+        verify(reviewRepository).save(any());
     }
 }
