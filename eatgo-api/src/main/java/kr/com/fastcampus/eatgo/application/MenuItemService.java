@@ -9,6 +9,6 @@ import java.util.List;
 public class MenuItemService {
 
     public void bulkUpdate(Long restaurantId, List<MenuItem> menuItems) {
-
+        //TODO : bulk update
     }
 }
