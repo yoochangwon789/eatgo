@@ -4,7 +4,6 @@ import kr.com.fastcampus.eatgo.domain.*;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import sun.plugin.util.ProgressMonitor;
 
 import java.util.ArrayList;
 import java.util.Arrays;
