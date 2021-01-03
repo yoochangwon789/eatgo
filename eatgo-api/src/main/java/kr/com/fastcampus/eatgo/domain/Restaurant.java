@@ -1,5 +1,6 @@
 package kr.com.fastcampus.eatgo.domain;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.*;
 
 import javax.persistence.Entity;
@@ -30,6 +31,7 @@ public class Restaurant {
 
     // 임시로 처리해 주는 기능
     @Transient
+    @JsonInclude(JsonInclude.Include.NON_NULL) // 제이슨이 null 이 아닐때만 출력
     private List<MenuItem> menuItems;
 
     public String getInformation() {
