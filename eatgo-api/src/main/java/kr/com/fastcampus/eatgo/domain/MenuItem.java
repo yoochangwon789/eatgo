@@ -1,5 +1,6 @@
 package kr.com.fastcampus.eatgo.domain;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.*;
 
 import javax.persistence.Entity;
@@ -24,6 +25,7 @@ public class MenuItem {
     private String name;
 
     @Transient
+    @JsonInclude(JsonInclude.Include.NON_DEFAULT) // boolean default 의 값이 false 이므로 false 일 때 출력하지 않겠다
     private boolean destroy;
 
     public String getName() {
