@@ -87,7 +87,7 @@ public class RestaurantServiceTest {
     }
 
     @Test
-    public void getRestaurant() {
+    public void getRestaurantWithExisted() {
         //restaurantRepository = new RestaurantRepositoryImpl();
         //menuItemRepository = new MenuItemRepositoryImpl();
         //restaurantService = new RestaurantService(restaurantRepository,menuItemRepository);
