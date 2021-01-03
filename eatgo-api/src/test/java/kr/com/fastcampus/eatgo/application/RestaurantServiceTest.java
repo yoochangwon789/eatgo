@@ -1,12 +1,10 @@
 package kr.com.fastcampus.eatgo.application;
 
-import kr.com.fastcampus.eatgo.domain.MenuItem;
-import kr.com.fastcampus.eatgo.domain.MenuItemRepository;
-import kr.com.fastcampus.eatgo.domain.Restaurant;
-import kr.com.fastcampus.eatgo.domain.RestaurantRepository;
+import kr.com.fastcampus.eatgo.domain.*;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+import sun.plugin.util.ProgressMonitor;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -100,6 +98,11 @@ public class RestaurantServiceTest {
 
         MenuItem menuItem = restaurant.getMenuItems().get(0);
         assertThat(menuItem.getName(), is("Kimchi"));
+    }
+
+    @Test
+    public void getRestaurantWithNotExisted() {
+       restaurantService.getRestaurant(404L);
     }
 
     @Test
