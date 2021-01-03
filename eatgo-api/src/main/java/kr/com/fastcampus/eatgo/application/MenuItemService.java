@@ -19,6 +19,7 @@ public class MenuItemService {
 
     public void bulkUpdate(Long restaurantId, List<MenuItem> menuItems) {
         for (MenuItem menuItem : menuItems) {
+            menuItem.setRestaurantId(restaurantId);
             menuItemRepository.save(menuItem);
         }
     }

@@ -12,6 +12,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
 class MenuItemServiceTests {
@@ -36,9 +37,12 @@ class MenuItemServiceTests {
         menuItems.add(MenuItem.builder()
                 .name("Kimchi")
                 .build());
+        menuItems.add(MenuItem.builder()
+                .name("Gukbob")
+                .build());
 
         menuItemService.bulkUpdate(1L, menuItems);
 
-        verify(menuItemRepository).save(any());
+        verify(menuItemRepository, times(2)).save(any());
     }
 }
