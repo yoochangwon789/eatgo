@@ -16,18 +16,21 @@ import static org.mockito.Mockito.verify;
 
 class MenuItemServiceTests {
 
-    private MenuItemService menuItemService = new MenuItemService();
+    private MenuItemService menuItemService;
 
     @Mock
     private MenuItemRepository menuItemRepository;
 
-    @Before
-    public void setUp() {
+    private void setMenuItemRepositoryUp() {
         MockitoAnnotations.initMocks(this);
+
+        menuItemService = new MenuItemService(menuItemRepository);
     }
 
     @Test
     public void bulkUpdate() {
+        setMenuItemRepositoryUp();
+
         List<MenuItem> menuItems = new ArrayList<>();
 
         menuItems.add(MenuItem.builder()
