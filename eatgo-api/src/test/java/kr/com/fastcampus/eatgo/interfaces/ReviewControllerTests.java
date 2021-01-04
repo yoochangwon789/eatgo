@@ -27,11 +27,21 @@ class ReviewControllerTests {
     private ReviewService reviewService;
 
     @Test
-    public void create() throws Exception {
+    public void createWithValidAttributes() throws Exception {
         mvc.perform(post("/restaurants/1/reviews")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content("{\"name\":\"JOKER\",\"score\":3,\"description\":\"Mat-it-da\"}"))
                 .andExpect(status().isCreated());
+
+        verify(reviewService).addReview(any());
+    }
+
+    @Test
+    public void createWithInValidAttributes() throws Exception {
+        mvc.perform(post("/restaurants/1/reviews")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content("{}"))
+                .andExpect(status().isBadRequest());
 
         verify(reviewService).addReview(any());
     }
