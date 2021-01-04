@@ -5,8 +5,10 @@ import kr.com.fastcampus.eatgo.domain.Review;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
 
@@ -17,8 +19,7 @@ public class ReviewController {
     private ReviewService reviewService;
 
     @PostMapping("/restaurants/{restaurantId}/reviews")
-    public ResponseEntity<?> create() throws URISyntaxException {
-        Review review = Review.builder().build();
+    public ResponseEntity<?> create(@Valid @RequestBody Review review) throws URISyntaxException {
         reviewService.addReview(review);
         return ResponseEntity.created(new URI("/restaurants/1/reviews/1"))
                 .body("{}");
