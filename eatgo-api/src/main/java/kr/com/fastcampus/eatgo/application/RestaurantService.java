@@ -10,14 +10,17 @@ import java.util.List;
 @Service
 public class RestaurantService {
 
+    @Autowired
     private RestaurantRepository restaurantRepository;
 
+    @Autowired
     private MenuItemRepository menuItemRepository;
 
+    @Autowired
     private ReviewRepository reviewRepository;
 
     public RestaurantService() {}
-    @Autowired
+
     public RestaurantService(RestaurantRepository restaurantRepository, MenuItemRepository menuItemRepository,
                              ReviewRepository reviewRepository) {
         this.restaurantRepository = restaurantRepository;

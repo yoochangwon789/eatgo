@@ -76,16 +76,6 @@ public class RestaurantServiceTest {
     }
 
     private void mockReviewRepository() {
-        MockitoAnnotations.initMocks(this);
-
-        restaurantService = new RestaurantService(restaurantRepository, menuItemRepository, reviewRepository);
-
-        Restaurant restaurant = Restaurant.builder()
-                .id(1004L)
-                .name("Bob zip")
-                .address("Seoul")
-                .build();
-
         List<Review> reviews = new ArrayList<>();
         reviews.add(Review.builder()
                 .name("BeRyong")
@@ -93,7 +83,6 @@ public class RestaurantServiceTest {
                 .description("Bad")
                 .build());
 
-        given(restaurantRepository.findById(1004L)).willReturn(Optional.of(restaurant));
         given(reviewRepository.findAllByRestaurantId(1004L)).willReturn(reviews);
     }
 
@@ -117,6 +106,7 @@ public class RestaurantServiceTest {
         //restaurantService = new RestaurantService(restaurantRepository,menuItemRepository);
 
         mockMenuItemRepository();
+        mockReviewRepository();
 
         Restaurant restaurant = restaurantService.getRestaurant(1004L);
 
@@ -128,6 +118,9 @@ public class RestaurantServiceTest {
 
         MenuItem menuItem = restaurant.getMenuItems().get(0);
         assertThat(menuItem.getName(), is("Kimchi"));
+
+        Review review = restaurant.getReviews().get(0);
+        assertThat(review.getDescription(), is("Bad"));
     }
 
     /*@Test
