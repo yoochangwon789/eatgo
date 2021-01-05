@@ -41,7 +41,7 @@ public class RestaurantServiceTest {
         // Mock 가짜 객체를 사용하기 위해 값을 넣어주고 잡아주는 기능을 하는 명시
         MockitoAnnotations.initMocks(this);
 
-        restaurantService = new RestaurantService(restaurantRepository, menuItemRepository);
+        restaurantService = new RestaurantService(restaurantRepository, menuItemRepository, reviewRepository);
 
         List<Restaurant> restaurants = new ArrayList<>();
         Restaurant restaurant = Restaurant.builder()
@@ -57,7 +57,7 @@ public class RestaurantServiceTest {
     private void mockMenuItemRepository() {
         MockitoAnnotations.initMocks(this);
 
-        restaurantService = new RestaurantService(restaurantRepository, menuItemRepository);
+        restaurantService = new RestaurantService(restaurantRepository, menuItemRepository, reviewRepository);
 
         Restaurant restaurant = Restaurant.builder()
                 .id(1004L)
@@ -73,6 +73,28 @@ public class RestaurantServiceTest {
 
         given(restaurantRepository.findById(1004L)).willReturn(Optional.of(restaurant));
         given(menuItemRepository.findAllByRestaurantId(1004L)).willReturn(menuItems);
+    }
+
+    private void mockReviewRepository() {
+        MockitoAnnotations.initMocks(this);
+
+        restaurantService = new RestaurantService(restaurantRepository, menuItemRepository, reviewRepository);
+
+        Restaurant restaurant = Restaurant.builder()
+                .id(1004L)
+                .name("Bob zip")
+                .address("Seoul")
+                .build();
+
+        List<Review> reviews = new ArrayList<>();
+        reviews.add(Review.builder()
+                .name("BeRyong")
+                .score(1)
+                .description("Bad")
+                .build());
+
+        given(restaurantRepository.findById(1004L)).willReturn(Optional.of(restaurant));
+        given(reviewRepository.findAllByRestaurantId(1004L)).willReturn(reviews);
     }
 
     @Test
@@ -116,7 +138,7 @@ public class RestaurantServiceTest {
     @Test
     public void addRestaurant() {
         MockitoAnnotations.initMocks(this);
-        restaurantService = new RestaurantService(restaurantRepository, menuItemRepository);
+        restaurantService = new RestaurantService(restaurantRepository, menuItemRepository, reviewRepository);
 
         given(restaurantRepository.save(any())).will(invocation -> {
             Restaurant restaurant = invocation.getArgument(0);
@@ -137,7 +159,7 @@ public class RestaurantServiceTest {
     @Test
     public void updateRestaurant() {
         MockitoAnnotations.initMocks(this);
-        restaurantService = new RestaurantService(restaurantRepository, menuItemRepository);
+        restaurantService = new RestaurantService(restaurantRepository, menuItemRepository, reviewRepository);
 
         Restaurant restaurant = Restaurant.builder()
                 .id(1004L)
