@@ -34,12 +34,20 @@ public class Restaurant {
     @JsonInclude(JsonInclude.Include.NON_NULL) // 제이슨이 null 이 아닐때만 출력
     private List<MenuItem> menuItems;
 
+    @Transient
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private List<Review> reviews;
+
     public String getInformation() {
         return name + " in " + address;
     }
 
     public void setMenuItem(List<MenuItem> menuItems) {
         this.menuItems = new ArrayList<>(menuItems);
+    }
+
+    public void setReviews(List<Review> reviews) {
+        this.reviews = new ArrayList<>(reviews);
     }
 
     public void updateInformation(String name, String address) {
