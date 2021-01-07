@@ -2,7 +2,6 @@ package kr.com.fastcampus.eatgo.application;
 
 import kr.com.fastcampus.eatgo.domain.MenuItem;
 import kr.com.fastcampus.eatgo.domain.MenuItemRepository;
-import kr.com.fastcampus.eatgo.domain.RestaurantRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
