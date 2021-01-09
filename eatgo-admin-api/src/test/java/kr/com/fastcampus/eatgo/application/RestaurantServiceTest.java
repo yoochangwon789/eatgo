@@ -52,6 +52,7 @@ public class RestaurantServiceTest {
         restaurants.add(restaurant);
 
         given(restaurantRepository.findAll()).willReturn(restaurants);
+        given(restaurantRepository.findById(1004L)).willReturn(Optional.of(restaurant));
     }
 
     private void mockMenuItemRepository() {
@@ -88,9 +89,6 @@ public class RestaurantServiceTest {
 
     @Test
     public void getRestaurants() {
-        //restaurantRepository = new RestaurantRepositoryImpl();
-        //restaurantService = new RestaurantService(restaurantRepository, menuItemRepository);
-
         mockRestaurantRepository();
 
         List<Restaurant> restaurants = restaurantService.getRestaurants();
@@ -101,26 +99,12 @@ public class RestaurantServiceTest {
 
     @Test
     public void getRestaurantWithExisted() {
-        //restaurantRepository = new RestaurantRepositoryImpl();
-        //menuItemRepository = new MenuItemRepositoryImpl();
-        //restaurantService = new RestaurantService(restaurantRepository,menuItemRepository);
-
-        mockMenuItemRepository();
-        mockReviewRepository();
+        mockRestaurantRepository();
 
         Restaurant restaurant = restaurantService.getRestaurant(1004L);
 
-        verify(menuItemRepository).findAllByRestaurantId(eq(1004L));
-        verify(reviewRepository).findAllByRestaurantId(eq(1004L));
-
         assertThat(restaurant.getId(), is(1004L));
         assertThat(restaurant.getName(), is("Bob zip"));
-
-        MenuItem menuItem = restaurant.getMenuItems().get(0);
-        assertThat(menuItem.getName(), is("Kimchi"));
-
-        Review review = restaurant.getReviews().get(0);
-        assertThat(review.getDescription(), is("Bad"));
     }
 
     /*@Test
