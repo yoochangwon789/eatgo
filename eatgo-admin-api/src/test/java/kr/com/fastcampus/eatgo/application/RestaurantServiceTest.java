@@ -25,12 +25,6 @@ public class RestaurantServiceTest {
     @Mock
     private RestaurantRepository restaurantRepository;
 
-    @Mock
-    private MenuItemRepository menuItemRepository;
-
-    @Mock
-    private ReviewRepository reviewRepository;
-
     //@Before
     //public void setUp() {
     //restaurantRepository = new RestaurantRepositoryImpl();
@@ -41,7 +35,7 @@ public class RestaurantServiceTest {
         // Mock 가짜 객체를 사용하기 위해 값을 넣어주고 잡아주는 기능을 하는 명시
         MockitoAnnotations.initMocks(this);
 
-        restaurantService = new RestaurantService(restaurantRepository, menuItemRepository, reviewRepository);
+        restaurantService = new RestaurantService(restaurantRepository);
 
         List<Restaurant> restaurants = new ArrayList<>();
         Restaurant restaurant = Restaurant.builder()
@@ -53,38 +47,6 @@ public class RestaurantServiceTest {
 
         given(restaurantRepository.findAll()).willReturn(restaurants);
         given(restaurantRepository.findById(1004L)).willReturn(Optional.of(restaurant));
-    }
-
-    private void mockMenuItemRepository() {
-        MockitoAnnotations.initMocks(this);
-
-        restaurantService = new RestaurantService(restaurantRepository, menuItemRepository, reviewRepository);
-
-        Restaurant restaurant = Restaurant.builder()
-                .id(1004L)
-                .name("Bob zip")
-                .address("Seoul")
-                .build();
-        //restaurant.setMenuItem(Arrays.asList(new MenuItem("Kimchi")));
-
-        List<MenuItem> menuItems = new ArrayList<>();
-        menuItems.add(MenuItem.builder()
-                .name("Kimchi")
-                .build());
-
-        given(restaurantRepository.findById(1004L)).willReturn(Optional.of(restaurant));
-        given(menuItemRepository.findAllByRestaurantId(1004L)).willReturn(menuItems);
-    }
-
-    private void mockReviewRepository() {
-        List<Review> reviews = new ArrayList<>();
-        reviews.add(Review.builder()
-                .name("BeRyong")
-                .score(1)
-                .description("Bad")
-                .build());
-
-        given(reviewRepository.findAllByRestaurantId(1004L)).willReturn(reviews);
     }
 
     @Test
@@ -115,7 +77,7 @@ public class RestaurantServiceTest {
     @Test
     public void addRestaurant() {
         MockitoAnnotations.initMocks(this);
-        restaurantService = new RestaurantService(restaurantRepository, menuItemRepository, reviewRepository);
+        restaurantService = new RestaurantService(restaurantRepository);
 
         given(restaurantRepository.save(any())).will(invocation -> {
             Restaurant restaurant = invocation.getArgument(0);
@@ -136,7 +98,7 @@ public class RestaurantServiceTest {
     @Test
     public void updateRestaurant() {
         MockitoAnnotations.initMocks(this);
-        restaurantService = new RestaurantService(restaurantRepository, menuItemRepository, reviewRepository);
+        restaurantService = new RestaurantService(restaurantRepository);
 
         Restaurant restaurant = Restaurant.builder()
                 .id(1004L)

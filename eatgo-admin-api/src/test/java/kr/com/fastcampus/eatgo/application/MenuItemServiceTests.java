@@ -10,9 +10,12 @@ import org.mockito.MockitoAnnotations;
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.core.Is.is;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.eq;
+import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
@@ -27,6 +30,22 @@ class MenuItemServiceTests {
         MockitoAnnotations.initMocks(this);
 
         menuItemService = new MenuItemService(menuItemRepository);
+    }
+
+    @Test
+    public void getMenuItems() {
+        setMenuItemRepositoryUp();
+
+        List<MenuItem> MockMenuItems = new ArrayList<>();
+        MockMenuItems.add(MenuItem.builder().name("Kimchi").build());
+
+        given(menuItemRepository.findAllByRestaurantId(1004L)).willReturn(MockMenuItems);
+
+        List<MenuItem> menuItems = menuItemService.getMenuItems(1004L);
+
+        MenuItem menuItem = menuItems.get(0);
+
+        assertThat(menuItem.getName(), is("Kimchi"));
     }
 
     @Test
