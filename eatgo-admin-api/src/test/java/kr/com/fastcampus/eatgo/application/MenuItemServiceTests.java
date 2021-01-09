@@ -36,10 +36,10 @@ class MenuItemServiceTests {
     public void getMenuItems() {
         setMenuItemRepositoryUp();
 
-        List<MenuItem> MockMenuItems = new ArrayList<>();
-        MockMenuItems.add(MenuItem.builder().name("Kimchi").build());
+        List<MenuItem> mockMenuItems = new ArrayList<>();
+        mockMenuItems.add(MenuItem.builder().name("Kimchi").build());
 
-        given(menuItemRepository.findAllByRestaurantId(1004L)).willReturn(MockMenuItems);
+        given(menuItemRepository.findAllByRestaurantId(1004L)).willReturn(mockMenuItems);
 
         List<MenuItem> menuItems = menuItemService.getMenuItems(1004L);
 
