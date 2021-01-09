@@ -8,6 +8,8 @@ import java.util.List;
 @EnableJpaRepositories("kr.com.fastcampus.eatgo.domin")
 public interface ReviewRepository extends CrudRepository<Review, Long> {
 
+    List<Review> findAll();
+
     List<Review> findAllByRestaurantId(Long restaurantId);
 
     Review save(Review review);
