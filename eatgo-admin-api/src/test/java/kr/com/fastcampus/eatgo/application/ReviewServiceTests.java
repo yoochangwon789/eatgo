@@ -35,7 +35,7 @@ class ReviewServiceTests {
 
         given(reviewRepository.findAll()).willReturn(mockReviews);
 
-        List<Review> reviews = reviewService.getReviews();
+        List<Review> reviews = mockReviews;
 
         Review review = reviews.get(0);
 
