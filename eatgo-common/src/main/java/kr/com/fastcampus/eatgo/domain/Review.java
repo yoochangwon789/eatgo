@@ -1,7 +1,6 @@
 package kr.com.fastcampus.eatgo.domain;
 
 import lombok.*;
-import org.springframework.boot.autoconfigure.domain.EntityScan;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -14,7 +13,6 @@ import javax.validation.constraints.NotNull;
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
-@EntityScan("kr.com.fastcampus.eatgo.domin")
 public class Review {
 
     @Id

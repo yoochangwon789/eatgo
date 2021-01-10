@@ -1,21 +1,19 @@
 package kr.com.fastcampus.eatgo.application;
 
-import kr.com.fastcampus.eatgo.domain.*;
+import kr.com.fastcampus.eatgo.domain.Restaurant;
+import kr.com.fastcampus.eatgo.domain.RestaurantRepository;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.BDDMockito.given;
-import static org.mockito.Mockito.verify;
 
 
 public class RestaurantServiceTest {

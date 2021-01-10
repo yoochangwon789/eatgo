@@ -2,7 +2,6 @@ package kr.com.fastcampus.eatgo.domain;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.*;
-import org.springframework.boot.autoconfigure.domain.EntityScan;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -17,7 +16,6 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-@EntityScan("kr.com.fastcampus.eatgo.domin")
 public class Restaurant {
 
     @Id
