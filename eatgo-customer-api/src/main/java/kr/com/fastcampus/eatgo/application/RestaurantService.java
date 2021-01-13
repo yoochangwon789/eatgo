@@ -30,7 +30,7 @@ public class RestaurantService {
 
     public List<Restaurant> getRestaurants(String region, Long categoryId) {
         // TODO : categoryId 구현 해야 됨
-        List<Restaurant> restaurants = restaurantRepository.findAllByAddressContaining(region);
+        List<Restaurant> restaurants = restaurantRepository.findAllByAddressContainingAndCategoryId(region, categoryId);
         return restaurants;
     }
 
