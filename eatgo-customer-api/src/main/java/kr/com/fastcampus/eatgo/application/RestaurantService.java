@@ -29,9 +29,7 @@ public class RestaurantService {
     }
 
     public List<Restaurant> getRestaurants(String region) {
-        // TODO : region 으로 필터링
-        
-        List<Restaurant> restaurants = restaurantRepository.findAll();
+        List<Restaurant> restaurants = restaurantRepository.findAllByAddressContaining(region);
         return restaurants;
     }
 

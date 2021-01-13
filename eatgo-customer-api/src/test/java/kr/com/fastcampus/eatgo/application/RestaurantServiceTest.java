@@ -51,7 +51,7 @@ public class RestaurantServiceTest {
                 .build();
         restaurants.add(restaurant);
 
-        given(restaurantRepository.findAll()).willReturn(restaurants);
+        given(restaurantRepository.findAllByAddressContaining("Seoul")).willReturn(restaurants);
     }
 
     private void mockMenuItemRepository() {
