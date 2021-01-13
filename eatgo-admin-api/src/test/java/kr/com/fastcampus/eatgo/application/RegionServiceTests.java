@@ -45,6 +45,7 @@ class RegionServiceTests {
 
     @Test
     public void addRegion() {
+        setRegionServiceUp();
         Region region = regionService.addRegion("Seoul");
 
         assertThat(region.getName(), is("Seoul"));

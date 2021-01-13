@@ -26,7 +26,8 @@ public class RegionService {
     }
 
     public Region addRegion(String name) {
-        // TODO : 구현 필요
-        return null;
+        Region region = Region.builder().name(name).build();
+
+        return region;
     }
 }
