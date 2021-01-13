@@ -24,4 +24,8 @@ public class RegionService {
 
         return regions;
     }
+
+    public Region addRegion(String seoul) {
+        return null;
+    }
 }
