@@ -1,9 +1,7 @@
 package kr.com.fastcampus.eatgo.interfaces;
 
 import kr.com.fastcampus.eatgo.application.CategoryService;
-import kr.com.fastcampus.eatgo.application.RegionService;
 import kr.com.fastcampus.eatgo.domain.Category;
-import kr.com.fastcampus.eatgo.domain.Region;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

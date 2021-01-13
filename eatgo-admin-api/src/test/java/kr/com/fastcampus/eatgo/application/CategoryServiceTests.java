@@ -2,8 +2,6 @@ package kr.com.fastcampus.eatgo.application;
 
 import kr.com.fastcampus.eatgo.domain.Category;
 import kr.com.fastcampus.eatgo.domain.CategoryRepository;
-import kr.com.fastcampus.eatgo.domain.Region;
-import kr.com.fastcampus.eatgo.domain.RegionRepository;
 import org.junit.Before;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;

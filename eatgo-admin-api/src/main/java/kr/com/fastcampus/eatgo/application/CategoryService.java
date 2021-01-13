@@ -2,8 +2,6 @@ package kr.com.fastcampus.eatgo.application;
 
 import kr.com.fastcampus.eatgo.domain.Category;
 import kr.com.fastcampus.eatgo.domain.CategoryRepository;
-import kr.com.fastcampus.eatgo.domain.Review;
-import kr.com.fastcampus.eatgo.domain.ReviewRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
