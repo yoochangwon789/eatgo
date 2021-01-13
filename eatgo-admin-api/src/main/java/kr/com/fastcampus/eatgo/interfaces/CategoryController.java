@@ -14,25 +14,25 @@ import java.net.URISyntaxException;
 import java.util.List;
 
 @RestController
-public class RegionController {
+public class CategoryController {
 
     @Autowired
-    private RegionService regionService;
+    private CategoryService categoryService;
 
-    @GetMapping("/regions")
-    public List<Region> list() {
-        List<Region> regions = regionService.getRegions();
+    @GetMapping("/categories")
+    public List<Category> list() {
+        List<Category> category = categoryService.getCategory();
 
-        return regions;
+        return category;
     }
 
-    @PostMapping("/regions")
-    public ResponseEntity<?> create(@RequestBody Region resource) throws URISyntaxException {
+    @PostMapping("/categories")
+    public ResponseEntity<?> create(@RequestBody Category resource) throws URISyntaxException {
         String name = resource.getName();
 
-        Region region = regionService.addRegion(name);
+        Category category = categoryService.addCategory(name);
 
-        String url = "/regions/" + region.getId();
+        String url = "/categories/" + category.getId();
         return ResponseEntity.created(new URI(url)).body("{}");
     }
 }
