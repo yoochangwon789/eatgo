@@ -1,6 +1,8 @@
 package kr.com.fastcampus.eatgo.interfaces;
 
+import kr.com.fastcampus.eatgo.application.CategoryService;
 import kr.com.fastcampus.eatgo.application.RegionService;
+import kr.com.fastcampus.eatgo.domain.Category;
 import kr.com.fastcampus.eatgo.domain.Region;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -21,7 +23,7 @@ public class CategoryController {
 
     @GetMapping("/categories")
     public List<Category> list() {
-        List<Category> category = categoryService.getCategory();
+        List<Category> category = categoryService.getCategories();
 
         return category;
     }

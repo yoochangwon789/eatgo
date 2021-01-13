@@ -1,5 +1,7 @@
 package kr.com.fastcampus.eatgo.application;
 
+import kr.com.fastcampus.eatgo.domain.Category;
+import kr.com.fastcampus.eatgo.domain.CategoryRepository;
 import kr.com.fastcampus.eatgo.domain.Review;
 import kr.com.fastcampus.eatgo.domain.ReviewRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,14 +12,22 @@ import java.util.List;
 @Service
 public class CategoryService {
 
-    private ReviewRepository reviewRepository;
+    private CategoryRepository categoryRepository;
 
     @Autowired
-    public ReviewService(ReviewRepository reviewRepository) {
-        this.reviewRepository = reviewRepository;
+    public CategoryService(CategoryRepository categoryRepository) {
+        this.categoryRepository = categoryRepository;
     }
 
-    public List<Review> getReviews() {
-        return reviewRepository.findAll();
+    public List<Category> getCategories() {
+        return categoryRepository.findAll();
+    }
+
+    public Category addCategory(String name) {
+        Category category = Category.builder().name(name).build();
+
+        categoryRepository.save(category);
+
+        return category;
     }
 }
