@@ -25,7 +25,8 @@ public class RegionService {
         return regions;
     }
 
-    public Region addRegion(String seoul) {
+    public Region addRegion(String name) {
+        // TODO : 구현 필요
         return null;
     }
 }
