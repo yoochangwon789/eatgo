@@ -52,7 +52,7 @@ class RestaurantControllerTest {
                 .name("JOKER House")
                 .address("Seoul")
                 .build());
-        given(restaurantService.getRestaurants("Seoul")).willReturn(restaurants);
+        given(restaurantService.getRestaurants("Seoul", 1L)).willReturn(restaurants);
 
         mvc.perform(get("/restaurants?region=Seoul&category=1"))
                 .andExpect(status().isOk())

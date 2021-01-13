@@ -28,7 +28,8 @@ public class RestaurantService {
         this.reviewRepository = reviewRepository;
     }
 
-    public List<Restaurant> getRestaurants(String region) {
+    public List<Restaurant> getRestaurants(String region, Long categoryId) {
+        // TODO : categoryId 구현 해야 됨
         List<Restaurant> restaurants = restaurantRepository.findAllByAddressContaining(region);
         return restaurants;
     }
