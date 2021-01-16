@@ -19,6 +19,7 @@ import java.util.List;
 import static org.hamcrest.core.StringContains.containsString;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.BDDMockito.given;
+import static org.mockito.Mockito.verify;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
@@ -52,9 +53,21 @@ class UserControllerTests {
 
     @Test
     public void create() throws Exception {
+        String email = "admin@exmple.com";
+        String name = "Administrator";
+
+        User user = User.builder()
+                .email(email)
+                .name(name)
+                .build();
+
+        given(userService.addUser(email, name)).willReturn(user);
+
         mvc.perform(post("/users")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content("{\"email\":\"admin@exmple.com\",\"name\":\"Administrator\"}"))
                 .andExpect(status().isCreated());
+
+        verify(userService).addUser(email, name);
     }
 }
