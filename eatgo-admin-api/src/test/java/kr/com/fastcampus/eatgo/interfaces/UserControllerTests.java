@@ -88,7 +88,9 @@ class UserControllerTests {
 
     @Test
     public void deactivate() throws Exception {
-        mvc.perform(delete("users/1004"))
+        mvc.perform(delete("/users/1004"))
                 .andExpect(status().isOk());
+
+        verify(userService).deactiveUser(1004L);
     }
 }

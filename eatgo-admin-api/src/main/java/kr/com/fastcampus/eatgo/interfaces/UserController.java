@@ -44,4 +44,9 @@ public class UserController {
 
         return "{}";
     }
+
+    @DeleteMapping("/users/{id}")
+    public String delete() {
+        return "{}";
+    }
 }

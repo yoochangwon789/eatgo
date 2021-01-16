@@ -44,4 +44,8 @@ public class UserService {
 
         return user;
     }
+
+    public void deactiveUser(Long id) {
+        // TODO : 실제로 작업 필요함.
+    }
 }
