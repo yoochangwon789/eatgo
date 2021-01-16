@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UserService {
@@ -34,6 +35,13 @@ public class UserService {
     }
 
     public User updateUser(Long id, String email, String name, Long level) {
-        return null;
+        // TODO : restaurantService 예외 처리 참고
+        User user = userRepository.findById(id).orElse(null);
+
+        user.setEmail(email);
+        user.setName(name);
+        user.setLevel(level);
+
+        return user;
     }
 }
