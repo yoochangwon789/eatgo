@@ -46,6 +46,7 @@ public class UserService {
     public User deactiveUser(Long id) {
         // TODO : 실제로 작업 필요함.
         User user = userRepository.findById(id).orElse(null);
+        user.deactivate();
 
         return user;
     }
