@@ -94,4 +94,13 @@ class UserServiceTests {
         assertThat(user.getName(), is("Superman"));
         assertThat(user.isAdmin(), is(true));
     }
+
+    @Test
+    public void deactiveUser() {
+        setUserServiceUp();
+
+        userService.deactiveUser(1004L);
+
+        verify(userRepository.findById(1004L));
+    }
 }
