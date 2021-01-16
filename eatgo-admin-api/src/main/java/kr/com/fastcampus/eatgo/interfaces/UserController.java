@@ -3,9 +3,13 @@ package kr.com.fastcampus.eatgo.interfaces;
 import kr.com.fastcampus.eatgo.application.UserService;
 import kr.com.fastcampus.eatgo.domain.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.List;
 
 @RestController
@@ -19,6 +23,12 @@ public class UserController {
         List<User> users = userService.getUsers();
 
         return users;
+    }
+
+    @PostMapping("/users")
+    public ResponseEntity<?> create() throws URISyntaxException {
+        String url = "/users/1";
+        return ResponseEntity.created(new URI(url)).body("{}");
     }
 
     // 1. User list
