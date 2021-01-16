@@ -23,10 +23,11 @@ public class UserService {
         return users;
     }
 
-    public User addUser(String email, String name) {
+    public User addUser(String email, String name, Long level) {
         User user = User.builder()
                 .email(email)
                 .name(name)
+                .level(level)
                 .build();
 
         return userRepository.save(user);

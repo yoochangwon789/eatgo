@@ -55,20 +55,22 @@ class UserControllerTests {
     public void create() throws Exception {
         String email = "admin@exmple.com";
         String name = "Administrator";
+        Long level = 1L;
 
         User user = User.builder()
                 .email(email)
                 .name(name)
+                .level(level)
                 .build();
 
-        given(userService.addUser(email, name)).willReturn(user);
+        given(userService.addUser(email, name, level)).willReturn(user);
 
         mvc.perform(post("/users")
                 .contentType(MediaType.APPLICATION_JSON)
-                .content("{\"email\":\"admin@exmple.com\",\"name\":\"Administrator\"}"))
+                .content("{\"email\":\"admin@exmple.com\",\"name\":\"Administrator\",\"level\":1}"))
                 .andExpect(status().isCreated());
 
-        verify(userService).addUser(email, name);
+        verify(userService).addUser(email, name, level);
     }
 
     @Test
