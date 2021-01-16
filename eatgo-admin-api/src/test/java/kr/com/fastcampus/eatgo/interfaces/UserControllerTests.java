@@ -1,6 +1,7 @@
 package kr.com.fastcampus.eatgo.interfaces;
 
 import antlr.build.Tool;
+import kr.com.fastcampus.eatgo.application.UserService;
 import kr.com.fastcampus.eatgo.domain.User;
 import org.apache.catalina.Group;
 import org.junit.jupiter.api.Test;
@@ -14,7 +15,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.hamcrest.Matchers.containsString;
+import static org.hamcrest.core.StringContains.containsString;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.BDDMockito.given;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -36,13 +37,14 @@ class UserControllerTests {
         List<User> users = new ArrayList<>();
         users.add(User.builder()
                 .email("tester@example.com")
-                .name("테스터").level(1L)
+                .name("tester")
+                .level(1L)
                 .build());
 
         given(userService.getUsers()).willReturn(users);
 
         mvc.perform(get("/users"))
                 .andExpect(status().isOk())
-                .andExpect(content().string(containsString("테스터")));
+                .andExpect(content().string(containsString("tester")));
     }
 }
