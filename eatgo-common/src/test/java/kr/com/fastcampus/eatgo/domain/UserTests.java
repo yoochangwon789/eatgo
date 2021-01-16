@@ -13,9 +13,10 @@ class UserTests {
         User user = User.builder()
                 .email("tester@example.com")
                 .name("테스터")
-                .level(1L)
+                .level(100L)
                 .build();
 
         assertThat(user.getName(), is("테스터"));
+        assertThat(user.isAdmin(), is(true));
     }
 }
