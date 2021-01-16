@@ -85,4 +85,10 @@ class UserControllerTests {
 
         verify(userService).updateUser(eq(id), eq(email), eq(name), eq(level));
     }
+
+    @Test
+    public void deactivate() throws Exception {
+        mvc.perform(delete("users/1004"))
+                .andExpect(status().isOk());
+    }
 }
