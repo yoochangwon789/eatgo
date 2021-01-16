@@ -32,4 +32,8 @@ public class UserService {
 
         return userRepository.save(user);
     }
+
+    public User updateUser(Long id, String email, String name, Long level) {
+        return null;
+    }
 }
