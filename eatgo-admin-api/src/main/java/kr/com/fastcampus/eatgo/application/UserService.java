@@ -5,9 +5,7 @@ import kr.com.fastcampus.eatgo.domain.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class UserService {
@@ -45,7 +43,10 @@ public class UserService {
         return user;
     }
 
-    public void deactiveUser(Long id) {
+    public User deactiveUser(Long id) {
         // TODO : 실제로 작업 필요함.
+        User user = userRepository.findById(id).orElse(null);
+
+        return user;
     }
 }
