@@ -1,7 +1,9 @@
 package kr.com.fastcampus.eatgo.application;
 
 import kr.com.fastcampus.eatgo.domain.UserRepository;
+import kr.com.fastcampus.eatgo.interfaces.UserExistedException;
 import org.junit.jupiter.api.Test;
+import org.junit.rules.ExpectedException;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
@@ -34,7 +36,7 @@ class UserServiceTests {
         verify(userRepository).save(any());
     }
 
-    @Test
+    @Test(ExpectedException = UserExistedException.class)
     public void registerUserWithExistedEmail() {
         setUserServiceUp();
 
