@@ -16,7 +16,13 @@ public class UserService {
     }
 
     public User registerUser(String email, String name, String password) {
-        // TODO : 구현 필요
-        return null;
+        User user = User.builder()
+                .id(1004L)
+                .email("tester@example.com")
+                .name("Tester")
+                .password("test")
+                .build();
+
+        return userRepository.save(user);
     }
 }

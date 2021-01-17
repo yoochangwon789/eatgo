@@ -23,6 +23,8 @@ class UserServiceTests {
 
     @Test
     public void registerUser() {
+        setUserServcieUp();
+
         String email = "tester@example.com";
         String name = "Tester";
         String password = "test";
