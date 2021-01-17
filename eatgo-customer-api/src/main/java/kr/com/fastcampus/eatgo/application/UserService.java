@@ -19,7 +19,7 @@ public class UserService {
 
     public User registerUser(String email, String name, String password) {
         PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-        String encodedPassword = hash(password);
+        String encodedPassword = passwordEncoder.encode(password);
 
         User user = User.builder()
                 .email(email)
