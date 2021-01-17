@@ -16,14 +16,14 @@ class UserServiceTests {
     @Mock
     private UserRepository userRepository;
 
-    public void setUserServcieUp() {
+    public void setUserServiceUp() {
         MockitoAnnotations.initMocks(this);
         userService = new UserService(userRepository);
     }
 
     @Test
     public void registerUser() {
-        setUserServcieUp();
+        setUserServiceUp();
 
         String email = "tester@example.com";
         String name = "Tester";
