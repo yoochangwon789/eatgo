@@ -1,5 +1,6 @@
 package kr.com.fastcampus.eatgo.interfaces;
 
+import kr.com.fastcampus.eatgo.application.UserService;
 import kr.com.fastcampus.eatgo.domain.User;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
