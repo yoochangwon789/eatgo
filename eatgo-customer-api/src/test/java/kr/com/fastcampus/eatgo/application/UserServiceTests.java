@@ -1,14 +1,17 @@
 package kr.com.fastcampus.eatgo.application;
 
+import kr.com.fastcampus.eatgo.domain.User;
 import kr.com.fastcampus.eatgo.domain.UserRepository;
-import kr.com.fastcampus.eatgo.interfaces.UserExistedException;
+import kr.com.fastcampus.eatgo.interfaces.EmailExistedException;
 import org.junit.jupiter.api.Test;
-import org.junit.rules.ExpectedException;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
-import static org.junit.jupiter.api.Assertions.*;
+import java.util.Optional;
+
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.BDDMockito.given;
+import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.verify;
 
 class UserServiceTests {
@@ -36,7 +39,7 @@ class UserServiceTests {
         verify(userRepository).save(any());
     }
 
-    @Test(ExpectedException = UserExistedException.class)
+    @Test(expected = EmailExistedException.class)
     public void registerUserWithExistedEmail() {
         setUserServiceUp();
 
@@ -44,8 +47,12 @@ class UserServiceTests {
         String name = "Tester";
         String password = "test";
 
+        User user = User.builder().build();
+
+        given(userRepository.findByEmail(email)).willReturn(Optional.of(user));
+
         userService.registerUser(email, name, password);
 
-        verify(userRepository).save(any());
+        verify(userRepository, never()).save(any());
     }
 }
