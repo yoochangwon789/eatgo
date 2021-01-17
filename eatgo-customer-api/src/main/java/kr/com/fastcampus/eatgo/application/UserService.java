@@ -20,6 +20,7 @@ public class UserService {
                 .email(email)
                 .name(name)
                 .password(password)
+                .level(1L)
                 .build();
 
         return userRepository.save(user);
