@@ -17,10 +17,9 @@ public class UserService {
 
     public User registerUser(String email, String name, String password) {
         User user = User.builder()
-                .id(1004L)
-                .email("tester@example.com")
-                .name("Tester")
-                .password("test")
+                .email(email)
+                .name(name)
+                .password(password)
                 .build();
 
         return userRepository.save(user);
