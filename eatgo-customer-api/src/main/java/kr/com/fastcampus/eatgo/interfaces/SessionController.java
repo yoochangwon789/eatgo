@@ -13,12 +13,10 @@ public class SessionController {
     @PostMapping("/session")
     public ResponseEntity<SessionDto> create() throws URISyntaxException {
         String accessToken = "ACCESSTOKEN";
-        SessionDto sessionDto = SessionDto.builder()
-                .accessToken(accessToken)
-                .build();
-
         String url = "/session";
 
-        return ResponseEntity.created(new URI(url)).body(sessionDto);
+        return ResponseEntity.created(new URI(url)).body(SessionDto.builder()
+                .accessToken(accessToken)
+                .build());
     }
 }
