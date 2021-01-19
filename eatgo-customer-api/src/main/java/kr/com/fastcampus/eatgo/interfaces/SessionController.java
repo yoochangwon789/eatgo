@@ -14,6 +14,6 @@ public class SessionController {
     public ResponseEntity<?> create() throws URISyntaxException {
         String url = "/session";
 
-        return ResponseEntity.created(new URI(url)).body("{}");
+        return ResponseEntity.created(new URI(url)).body("{\"accessToken\":\"ACCESSTOKEN\"}");
     }
 }

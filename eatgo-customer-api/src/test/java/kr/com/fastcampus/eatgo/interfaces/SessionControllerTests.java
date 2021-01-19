@@ -28,11 +28,11 @@ class SessionControllerTests {
 
     @Test
     public void create() throws Exception {
-        mvc.perform(post("/users")
+        mvc.perform(post("/session")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content("{\"email\":\"tester@example.com\",\"password\":\"test\"}"))
                 .andExpect(status().isCreated())
-                .andExpect(header().string("location", "/users/1004"))
+                .andExpect(header().string("location", "/session"))
                 .andExpect(content().string("{\"accessToken\":\"ACCESSTOKEN\"}"));
 
     }
