@@ -11,9 +11,10 @@ import java.net.URISyntaxException;
 public class SessionController {
 
     @PostMapping("/session")
-    public ResponseEntity<?> create() throws URISyntaxException {
+    public ResponseEntity<SessionDto> create() throws URISyntaxException {
+        SessionDto sessionDto = new SessionDto();
         String url = "/session";
 
-        return ResponseEntity.created(new URI(url)).body("{\"accessToken\":\"ACCESSTOKEN\"}");
+        return ResponseEntity.created(new URI(url)).body(sessionDto);
     }
 }
