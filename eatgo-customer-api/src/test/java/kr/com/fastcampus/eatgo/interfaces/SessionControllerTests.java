@@ -37,7 +37,7 @@ class SessionControllerTests {
         String email = "tester@example.com";
         String password = "test";
 
-        User mockUser = User.builder().password(password).build();
+        User mockUser = User.builder().password("ACCESSTOKEN").build();
 
         given(userService.authenticate(email, password)).willReturn(mockUser);
 
