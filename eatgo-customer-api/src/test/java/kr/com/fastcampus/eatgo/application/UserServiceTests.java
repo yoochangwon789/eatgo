@@ -6,9 +6,12 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
+import java.util.Optional;
+
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.verify;
 
 class UserServiceTests {
@@ -59,6 +62,9 @@ class UserServiceTests {
 
         String email = "tester@example.com";
         String password = "test";
+
+        User mockUser = User.builder().email(email).build();
+        given(userRepository.findByEmail(email)).willReturn(Optional.of(mockUser));
 
         User user = userService.authenticate(email, password);
 

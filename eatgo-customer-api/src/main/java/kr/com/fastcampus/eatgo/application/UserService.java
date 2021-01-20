@@ -37,7 +37,8 @@ public class UserService {
     }
 
     public User authenticate(String email, String password) {
-        // TODO : 구현 예정
-        return null;
+        User user = userRepository.findByEmail(email).orElse(null);
+
+        return user;
     }
 }
