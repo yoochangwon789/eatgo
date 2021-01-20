@@ -1,10 +1,13 @@
 package kr.com.fastcampus.eatgo.application;
 
+import kr.com.fastcampus.eatgo.domain.User;
 import kr.com.fastcampus.eatgo.domain.UserRepository;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.core.Is.is;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.verify;
 
@@ -49,4 +52,16 @@ class UserServiceTests {
 //
 //        verify(userRepository, never()).save(any());
 //    }
+
+    @Test
+    public void authenticateWithValidAttributes() {
+        setUserServiceUp();
+
+        String email = "tester@example.com";
+        String password = "test";
+
+        User user = userService.authenticate(email, password);
+
+        assertThat(user.getEmail(), is(email));
+    }
 }
