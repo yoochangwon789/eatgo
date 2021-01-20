@@ -41,4 +41,8 @@ public class User {
     public void deactivate() {
         level = 0L;
     }
+
+    public String getAccessToken() {
+        return password.substring(0, 10);
+    }
 }
