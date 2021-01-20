@@ -5,6 +5,7 @@ import kr.com.fastcampus.eatgo.domain.UserRepository;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.util.Optional;
 
@@ -22,9 +23,12 @@ class UserServiceTests {
     @Mock
     private UserRepository userRepository;
 
+    @Mock
+    private PasswordEncoder passwordEncoder;
+
     public void setUserServiceUp() {
         MockitoAnnotations.initMocks(this);
-        userService = new UserService(userRepository);
+        userService = new UserService(userRepository, passwordEncoder);
     }
 
     @Test
@@ -72,17 +76,30 @@ class UserServiceTests {
         assertThat(user.getEmail(), is(email));
     }
 
+//    @Test
+//    public void authenticateWithNotExistedEmail() {
+//        setUserServiceUp();
+//
+//        String email = "x@example.com";
+//        String password = "test";
+//
+//        given(userRepository.findByEmail(email)).willReturn(Optional.empty());
+//
+//        userService.authenticate(email, password);
+//    }
+
     @Test
-    public void authenticateWithNotExistedEmail() {
+    public void authenticateWithWrongPassword() {
         setUserServiceUp();
 
-        String email = "x@example.com";
-        String password = "test";
+        String email = "tester@example.com";
+        String password = "x";
 
-        given(userRepository.findByEmail(email)).willReturn(Optional.empty());
+        User mockUser = User.builder().email(email).build();
+
+        given(userRepository.findByEmail(email)).willReturn(Optional.of(mockUser));
+        given(passwordEncoder.matches(any(), any())).willReturn(true);
 
         userService.authenticate(email, password);
     }
-
-
 }
