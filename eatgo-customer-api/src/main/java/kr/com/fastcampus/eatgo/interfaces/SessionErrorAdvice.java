@@ -13,7 +13,7 @@ public class SessionErrorAdvice {
     @ResponseBody
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(PasswordWrongException.class)
-    public String handleNotFound() {
+    public String handlePasswordWrong() {
         return "{}";
     }
 }
