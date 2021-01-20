@@ -12,9 +12,4 @@ public class EatgoCustomerApiApplication {
     public static void main(String[] args) {
         SpringApplication.run(EatgoCustomerApiApplication.class, args);
     }
-
-    @Bean
-    public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
-    }
 }
