@@ -48,7 +48,8 @@ class SessionControllerTests {
                 .content("{\"email\":\"tester@example.com\",\"password\":\"test\"}"))
                 .andExpect(status().isCreated())
                 .andExpect(header().string("location", "/session"))
-                .andExpect(content().string(containsString("{\"accessToken\":\"")));
+                .andExpect(content().string(containsString("{\"accessToken\":\"")))
+                .andExpect(content().string(containsString(".")));
 
         verify(userService).authenticate(eq("tester@example.com"), eq("test"));
     }
