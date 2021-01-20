@@ -36,10 +36,12 @@ class SessionControllerTests {
 
     @Test
     public void createWithValidAttributes() throws Exception {
+        Long id = 1004L;
+        String name = "Tester";
         String email = "tester@example.com";
         String password = "test";
 
-        User mockUser = User.builder().password("ACCESSTOKEN").build();
+        User mockUser = User.builder().id(id).name(name).build();
 
         given(userService.authenticate(email, password)).willReturn(mockUser);
 
