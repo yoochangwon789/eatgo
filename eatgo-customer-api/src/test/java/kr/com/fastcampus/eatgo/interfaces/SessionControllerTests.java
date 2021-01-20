@@ -4,6 +4,7 @@ import kr.com.fastcampus.eatgo.application.EmailNotExistedException;
 import kr.com.fastcampus.eatgo.application.PasswordWrongException;
 import kr.com.fastcampus.eatgo.application.UserService;
 import kr.com.fastcampus.eatgo.domain.User;
+import kr.com.fastcampus.eatgo.utils.JwtUtil;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,7 +47,7 @@ class SessionControllerTests {
                 .content("{\"email\":\"tester@example.com\",\"password\":\"test\"}"))
                 .andExpect(status().isCreated())
                 .andExpect(header().string("location", "/session"))
-                .andExpect(content().string("{\"accessToken\":\"ACCESSTOKE\"}"));
+                .andExpect(content().string("{\"accessToken\":\"}"));
 
         verify(userService).authenticate(eq("tester@example.com"), eq("test"));
     }
