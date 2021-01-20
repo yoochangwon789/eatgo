@@ -10,6 +10,7 @@ import java.util.Optional;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.verify;
@@ -70,4 +71,18 @@ class UserServiceTests {
 
         assertThat(user.getEmail(), is(email));
     }
+
+    @Test
+    public void authenticateWithNotExistedEmail() {
+        setUserServiceUp();
+
+        String email = "x@example.com";
+        String password = "test";
+
+        given(userRepository.findByEmail(email)).willReturn(Optional.empty());
+
+        userService.authenticate(email, password);
+    }
+
+
 }
