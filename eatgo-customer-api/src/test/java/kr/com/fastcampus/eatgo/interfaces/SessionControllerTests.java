@@ -29,7 +29,7 @@ class SessionControllerTests {
     private UserService userService;
 
     @Test
-    public void createWithValidAttribute() throws Exception {
+    public void createWithValidAttributes() throws Exception {
         mvc.perform(post("/session")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content("{\"email\":\"tester@example.com\",\"password\":\"test\"}"))
