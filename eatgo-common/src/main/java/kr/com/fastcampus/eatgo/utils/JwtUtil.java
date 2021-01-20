@@ -6,6 +6,6 @@ import org.springframework.stereotype.Component;
 public class JwtUtil {
 
     public String createToken(Long id, String name) {
-        return "";
+        return "header.payload.signature";
     }
 }
