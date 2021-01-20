@@ -14,6 +14,7 @@ import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
+import static org.hamcrest.Matchers.containsString;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.verify;
@@ -47,7 +48,7 @@ class SessionControllerTests {
                 .content("{\"email\":\"tester@example.com\",\"password\":\"test\"}"))
                 .andExpect(status().isCreated())
                 .andExpect(header().string("location", "/session"))
-                .andExpect(content().string("{\"accessToken\":\"}"));
+                .andExpect(content().string(containsString("{\"accessToken\":\"")));
 
         verify(userService).authenticate(eq("tester@example.com"), eq("test"));
     }
