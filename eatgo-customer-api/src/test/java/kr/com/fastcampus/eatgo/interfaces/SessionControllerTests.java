@@ -44,19 +44,6 @@ class SessionControllerTests {
     }
 
     @Test
-    public void createWithWrongPassword() throws Exception {
-        given(userService.authenticate("tester@example.com", "x"))
-                .willThrow(PasswordWrongException.class);
-
-        mvc.perform(post("/session")
-                .contentType(MediaType.APPLICATION_JSON)
-                .content("{\"email\":\"tester@example.com\",\"password\":\"x\"}"))
-                .andExpect(status().isBadRequest());
-
-        verify(userService).authenticate(eq("tester@example.com"), eq("x"));
-    }
-
-    @Test
     public void createWithNotExistedEmail() throws Exception {
         given(userService.authenticate("x@example.com", "test"))
                 .willThrow(EmailNotExistedException.class);
@@ -67,5 +54,18 @@ class SessionControllerTests {
                 .andExpect(status().isBadRequest());
 
         verify(userService).authenticate(eq("x@example.com"), eq("test"));
+    }
+
+    @Test
+    public void createWithWrongPassword() throws Exception {
+        given(userService.authenticate("tester@example.com", "x"))
+                .willThrow(PasswordWrongException.class);
+
+        mvc.perform(post("/session")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content("{\"email\":\"tester@example.com\",\"password\":\"x\"}"))
+                .andExpect(status().isBadRequest());
+
+        verify(userService).authenticate(eq("tester@example.com"), eq("x"));
     }
 }
