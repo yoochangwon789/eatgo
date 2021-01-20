@@ -1,5 +1,6 @@
 package kr.com.fastcampus.eatgo.interfaces;
 
+import kr.com.fastcampus.eatgo.application.PasswordWrongException;
 import kr.com.fastcampus.eatgo.application.UserService;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
@@ -44,7 +45,7 @@ class SessionControllerTests {
     @Test
     public void createWithInValidAttributes() throws Exception {
         given(userService.authenticate("tester@example.com", "x"))
-                .willThrow(PasswordWrongException.class)
+                .willThrow(PasswordWrongException.class);
 
         mvc.perform(post("/session")
                 .contentType(MediaType.APPLICATION_JSON)
