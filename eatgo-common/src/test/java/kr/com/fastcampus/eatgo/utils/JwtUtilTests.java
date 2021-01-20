@@ -12,7 +12,7 @@ class JwtUtilTests {
     public void createToken() {
         JwtUtil jwtUtil = new JwtUtil();
 
-        String token = jwtUtil.createToken(1004L, "Jhon");
+        String token = jwtUtil.createToken(1004L, "John");
 
         assertThat(token, containsString("."));
     }
