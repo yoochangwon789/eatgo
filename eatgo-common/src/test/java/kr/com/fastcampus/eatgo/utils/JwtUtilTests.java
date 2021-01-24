@@ -1,8 +1,6 @@
 package kr.com.fastcampus.eatgo.utils;
 
 import io.jsonwebtoken.Claims;
-import org.junit.Before;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import static org.hamcrest.MatcherAssert.assertThat;
