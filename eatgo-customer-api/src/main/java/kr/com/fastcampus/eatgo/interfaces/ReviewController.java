@@ -1,9 +1,11 @@
 package kr.com.fastcampus.eatgo.interfaces;
 
+import io.jsonwebtoken.Claims;
 import kr.com.fastcampus.eatgo.application.ReviewService;
 import kr.com.fastcampus.eatgo.domain.Review;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -20,9 +22,11 @@ public class ReviewController {
     private ReviewService reviewService;
 
     @PostMapping("/restaurants/{restaurantId}/reviews")
-    public ResponseEntity<?> create(@PathVariable("restaurantId") Long restaurantId,
+    public ResponseEntity<?> create(Authentication authentication, @PathVariable("restaurantId") Long restaurantId,
                                     @Valid @RequestBody Review resource) throws URISyntaxException {
-        String name = "John";
+        Claims claims = (Claims) authentication.getPrincipal();
+
+        String name = claims.get("name", String.class);
         Integer score = resource.getScore();
         String description = resource.getDescription();
 
