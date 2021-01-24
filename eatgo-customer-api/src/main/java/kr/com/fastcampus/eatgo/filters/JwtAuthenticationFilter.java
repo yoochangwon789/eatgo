@@ -12,4 +12,6 @@ public class JwtAuthenticationFilter extends BasicAuthenticationFilter {
         super(authenticationManager);
         this.jwtUtil = jwtUtil;
     }
+
+    // TODO : 실제로 JWT 분석 필요함.
 }
