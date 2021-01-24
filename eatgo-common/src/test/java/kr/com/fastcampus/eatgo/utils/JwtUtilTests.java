@@ -31,9 +31,9 @@ class JwtUtilTests {
     @Test
     public void getCalims() {
         setUp();
-        String token = "...";
+        String token = "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VySWQiOjEwMDQsIm5hbWUiOiJKb2huIn0.8hm6ZOJykSINHxL-rf0yV882fApL3hyQ9-WGlJUyo2A";
         Claims claims = jwtUtil.getClaims(token);
 
-        assertThat(claims.get("name"), is("Tester"));
+        assertThat(claims.get("name"), is("John"));
     }
 }
