@@ -10,6 +10,8 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+import javax.servlet.Filter;
+
 @Configuration
 @EnableWebSecurity
 public class SecurityJavaConfig extends WebSecurityConfigurerAdapter {
@@ -19,11 +21,15 @@ public class SecurityJavaConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+        Filter filter;
+
         http
                 .cors().disable()
                 .csrf().disable()
                 .formLogin().disable()
-                .headers().frameOptions().disable();
+                .headers().frameOptions().disable()
+                .and()
+                .addFilter(filter);
     }
 
     @Bean
