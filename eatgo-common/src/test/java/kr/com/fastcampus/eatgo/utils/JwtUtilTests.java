@@ -34,6 +34,7 @@ class JwtUtilTests {
         String token = "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VySWQiOjEwMDQsIm5hbWUiOiJKb2huIn0.8hm6ZOJykSINHxL-rf0yV882fApL3hyQ9-WGlJUyo2A";
         Claims claims = jwtUtil.getClaims(token);
 
+        assertThat(claims.get("userId", Long.class), is(1004L));
         assertThat(claims.get("name"), is("John"));
     }
 }
