@@ -1,6 +1,7 @@
 package kr.com.fastcampus.eatgo.utils;
 
 import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.Jws;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.security.Keys;
@@ -27,6 +28,11 @@ public class JwtUtil {
     }
 
     public Claims getClaims(String token) {
-        return null;
+        Claims claims = Jwts.parser()
+                .setSigningKey(key)
+                .parseClaimsJws(token)
+                .getBody();
+
+        return claims;
     }
 }
