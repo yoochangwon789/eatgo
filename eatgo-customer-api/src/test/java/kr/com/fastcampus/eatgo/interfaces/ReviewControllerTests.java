@@ -40,7 +40,7 @@ class ReviewControllerTests {
                 .build());
 
         mvc.perform(post("/restaurants/1/reviews")
-                .header("Authorization:Beater " + token)
+                .header("Authorization","Beater" + token)
                 .contentType(MediaType.APPLICATION_JSON)
                 .content("{\"score\":3,\"description\":\"Mat-it-da\"}"))
                 .andExpect(status().isCreated())
