@@ -1,7 +1,9 @@
 package kr.com.fastcampus.eatgo.filters;
 
+import io.jsonwebtoken.Claims;
 import kr.com.fastcampus.eatgo.utils.JwtUtil;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -50,5 +52,11 @@ public class JwtAuthenticationFilter extends BasicAuthenticationFilter {
         if (token == null) {
             return null;
         }
+        // TODO : JWT 구현  --- JwtUtil 에서 claims 얻기.
+
+        Claims claims;
+
+        Authentication authentication = new UsernamePasswordAuthenticationToken(claims, null);
+        return authentication;
     }
 }
