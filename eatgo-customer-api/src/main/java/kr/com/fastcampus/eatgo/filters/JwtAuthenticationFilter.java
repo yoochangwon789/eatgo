@@ -52,9 +52,9 @@ public class JwtAuthenticationFilter extends BasicAuthenticationFilter {
         if (token == null) {
             return null;
         }
-        // TODO : JWT 구현  --- JwtUtil 에서 claims 얻기.
 
-        Claims claims;
+        // TODO : JWT 구현  --- JwtUtil 에서 claims 얻기.
+        Claims claims = jwtUtil.getClaims(token.substring("Bearer".length()));
 
         Authentication authentication = new UsernamePasswordAuthenticationToken(claims, null);
         return authentication;
