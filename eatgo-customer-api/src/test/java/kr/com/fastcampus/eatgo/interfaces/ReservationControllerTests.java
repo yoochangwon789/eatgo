@@ -22,5 +22,6 @@ class ReservationControllerTests {
     public void create() throws Exception {
         mvc.perform(post("/restaurants/1004/reservations"))
                 .andExpect(status().isCreated());
+
     }
 }

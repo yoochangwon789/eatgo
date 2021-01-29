@@ -1,6 +1,7 @@
 package kr.com.fastcampus.eatgo.interfaces;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -11,8 +12,8 @@ import java.net.URISyntaxException;
 public class ReservationController {
 
     @PostMapping("/restaurants/{restaurantsId}/reservations")
-    public ResponseEntity<?> create() throws URISyntaxException {
-        String url = "/restaurants/1004/reservations/1";
+    public ResponseEntity<?> create(@PathVariable Long restaurantsId) throws URISyntaxException {
+        String url = "/restaurants/"+ restaurantsId +"/reservations/1";
 
         return ResponseEntity.created(new URI(url)).body("{}");
     }
