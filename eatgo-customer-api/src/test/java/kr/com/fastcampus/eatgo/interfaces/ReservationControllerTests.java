@@ -35,7 +35,7 @@ class ReservationControllerTests {
 
         mvc.perform(post("/restaurants/1004/reservations")
                 .contentType(MediaType.APPLICATION_JSON)
-                .content("{\"userId\":1,\"name\":\"Tester\",\"date\":\"2019-12-25\",\"time\":\"20:00\",\"partySize\":20}"))
+                .content("{\"date\":\"2019-12-25\",\"time\":\"20:00\",\"partySize\":20}"))
                 .andExpect(status().isCreated());
 
         verify(reservationService).addReservation(eq(1004L), eq(userId), eq(name), eq(date), eq(time), eq(partySize));
