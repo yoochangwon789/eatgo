@@ -35,6 +35,7 @@ class ReservationControllerTests {
         Integer partySize = 20;
 
         mvc.perform(post("/restaurants/369/reservations")
+                .header("Authorization", "Bearer" + token)
                 .contentType(MediaType.APPLICATION_JSON)
                 .content("{\"date\":\"2019-12-25\",\"time\":\"20:00\",\"partySize\":20}"))
                 .andExpect(status().isCreated());
