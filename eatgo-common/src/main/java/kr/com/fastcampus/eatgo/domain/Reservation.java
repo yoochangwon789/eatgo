@@ -5,6 +5,7 @@ import lombok.*;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.validation.constraints.NotEmpty;
 
 @Entity
 @Getter
@@ -22,9 +23,12 @@ public class Reservation {
 
     private String name;
 
+    @NotEmpty
     private String date;
 
+    @NotEmpty
     private String time;
 
+    @NonNull
     private Integer partySize;
 }
