@@ -7,7 +7,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public class ReservationService {
 
-    public void addReservation(Long userId, String name, String date, String time, Integer partySize) {
+    public void addReservation(Long restaurantsId, Long userId, String name, String date, String time, Integer partySize) {
 
     }
 }
