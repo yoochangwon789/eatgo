@@ -9,8 +9,8 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
-import static com.sun.javaws.JnlpxArgs.verify;
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.verify;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -28,6 +28,12 @@ class ReservationControllerTests {
     public void create() throws Exception {
         mvc.perform(post("/restaurants/1004/reservations"))
                 .andExpect(status().isCreated());
+
+        Long userId = 1L;
+        String name = "Tester";
+        String date = "2019-12-25";
+        String time = "20:00";
+        Integer partySize = 20;
 
         verify(reservationService).addReservation(userId, name, date, time, partySize);
     }
