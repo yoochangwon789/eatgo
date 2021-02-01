@@ -9,7 +9,14 @@ import org.springframework.transaction.annotation.Transactional;
 public class ReservationService {
 
     public Reservation addReservation(Long restaurantsId, Long userId, String name, String date, String time, Integer partySize) {
-        // TODO : 구현 예정
-        return Reservation.builder().build();
+
+        return Reservation.builder()
+                .restaurantId(restaurantsId)
+                .userId(userId)
+                .name(name)
+                .date(date)
+                .time(time)
+                .partySize(partySize)
+                .build();
     }
 }

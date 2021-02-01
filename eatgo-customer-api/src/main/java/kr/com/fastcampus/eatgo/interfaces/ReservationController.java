@@ -18,7 +18,7 @@ import java.net.URISyntaxException;
 public class ReservationController {
 
     @Autowired
-    private ReservationService reservationServcice;
+    private ReservationService reservationService;
 
     @PostMapping("/restaurants/{restaurantsId}/reservations")
     public ResponseEntity<?> create(Authentication authentication,
@@ -33,7 +33,7 @@ public class ReservationController {
         String time = resource.getTime();
         Integer partySize = resource.getPartySize();
 
-        Reservation reservation = reservationServcice.addReservation(restaurantsId, userId, name, date, time, partySize);
+        Reservation reservation = reservationService.addReservation(restaurantsId, userId, name, date, time, partySize);
 
         String url = "/restaurants/"+ restaurantsId + "/reservations/" + reservation.getId();
 
