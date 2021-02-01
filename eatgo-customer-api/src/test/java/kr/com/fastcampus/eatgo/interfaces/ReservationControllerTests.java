@@ -32,10 +32,10 @@ class ReservationControllerTests {
     public void create() throws Exception {
         String token = "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VySWQiOjEwMDQsIm5hbWUiOiJKb2huIn0.8hm6ZOJykSINHxL-rf0yV882fApL3hyQ9-WGlJUyo2A";
 
-        Reservation mockReservation = Reservation.builder().id(12L).build();
-
-        given(reservationService.addReservation(any(), any(), any(), any(), any(), any()))
-                .willReturn(mockReservation);
+//        Reservation mockReservation = Reservation.builder().id(12L).build();
+//
+//        given(reservationService.addReservation(any(), any(), any(), any(), any(), any()))
+//                .willReturn(mockReservation);
 
         mvc.perform(post("/restaurants/369/reservations")
                 .header("Authorization", "Bearer" + token)
