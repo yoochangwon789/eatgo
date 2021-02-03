@@ -1,17 +1,26 @@
 package kr.com.fastcampus.eatgo.application;
 
 import kr.com.fastcampus.eatgo.domain.Reservation;
+import kr.com.fastcampus.eatgo.domain.ReservationRepository;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
 
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.any;
 import static org.hamcrest.core.Is.is;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.verify;
 
 class ReservationServiceTests {
 
     private ReservationService reservationService;
 
+    @Mock
+    private ReservationRepository reservationRepository;
+
     public void setReservationServiceUp() {
+        MockitoAnnotations.initMocks(this);
+
         reservationService = new ReservationService();
     }
 
@@ -29,5 +38,7 @@ class ReservationServiceTests {
         Reservation reservation = reservationService.addReservation(restaurantsId, userId, name, date, time, partySize);
 
         assertThat(reservation.getName(), is(name));
+
+        verify(reservationRepository).save(any(Reservation.class));
     }
 }
