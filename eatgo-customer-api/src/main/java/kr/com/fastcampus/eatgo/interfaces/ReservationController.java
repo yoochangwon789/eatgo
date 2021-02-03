@@ -35,7 +35,7 @@ public class ReservationController {
 
         Reservation reservation = reservationService.addReservation(restaurantsId, userId, name, date, time, partySize);
 
-        String url = "/restaurants/"+ restaurantsId + "/reservations/" + reservation.getId();
+        String url = "/restaurants/" + restaurantsId + "/reservations/" + reservation.getId();
 
         return ResponseEntity.created(new URI(url)).body("{}");
     }

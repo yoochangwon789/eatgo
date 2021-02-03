@@ -9,8 +9,10 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class ReservationServiceTests {
 
+    private ReservationService reservationService;
+
     @Test
     public void addReservation() {
-        reservationService.addReservation(restaurantsId, userId, name, date, time, partySize);
+//        reservationService.addReservation(restaurantsId, userId, name, date, time, partySize);
     }
 }
