@@ -1,4 +1,8 @@
 package kr.com.fastcampus.eatgo.domain;
 
-public interface ReservationRepository {
+import org.springframework.data.repository.CrudRepository;
+
+public interface ReservationRepository extends CrudRepository<Reservation, Long> {
+
+    Reservation save(Reservation reservation);
 }

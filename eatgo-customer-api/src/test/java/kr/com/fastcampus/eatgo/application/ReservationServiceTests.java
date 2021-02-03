@@ -7,8 +7,9 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.any;
+import static org.mockito.ArgumentMatchers.any;
 import static org.hamcrest.core.Is.is;
+import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.verify;
 
 class ReservationServiceTests {
@@ -21,7 +22,7 @@ class ReservationServiceTests {
     public void setReservationServiceUp() {
         MockitoAnnotations.initMocks(this);
 
-        reservationService = new ReservationService();
+        reservationService = new ReservationService(reservationRepository);
     }
 
     @Test
@@ -34,6 +35,9 @@ class ReservationServiceTests {
         String date = "2019-12-25";
         String time = "20:00";
         Integer partySize = 20;
+
+        Reservation mockReservation = Reservation.builder().name(name).build();
+        given(reservationRepository.save(any())).willReturn(mockReservation);
 
         Reservation reservation = reservationService.addReservation(restaurantsId, userId, name, date, time, partySize);
 
