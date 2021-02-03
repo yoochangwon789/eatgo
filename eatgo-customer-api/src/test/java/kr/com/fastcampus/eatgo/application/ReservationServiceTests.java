@@ -36,8 +36,10 @@ class ReservationServiceTests {
         String time = "20:00";
         Integer partySize = 20;
 
-        Reservation mockReservation = Reservation.builder().name(name).build();
-        given(reservationRepository.save(any())).willReturn(mockReservation);
+        given(reservationRepository.save(any())).will(invocation -> {
+            Reservation reservation = invocation.getArgument(0);
+            return reservation;
+        });
 
         Reservation reservation = reservationService.addReservation(restaurantsId, userId, name, date, time, partySize);
 
