@@ -24,6 +24,7 @@ public class ReservationController {
     public ResponseEntity<?> create(Authentication authentication,
                                     @PathVariable Long restaurantsId,
                                     @RequestBody Reservation resource) throws URISyntaxException {
+
         Claims claims = (Claims) authentication.getPrincipal();
 
         Long userId = claims.get("userId", Long.class);
