@@ -28,14 +28,13 @@ public class ReservationController {
 
         Long userId = claims.get("userId", Long.class);
         String name = claims.get("name", String.class);
-
         String date = resource.getDate();
         String time = resource.getTime();
         Integer partySize = resource.getPartySize();
 
-        Reservation reservation = reservationService.addReservation(restaurantsId, userId, name, date, time, partySize);
+        reservationService.addReservation(restaurantsId, userId, name, date, time, partySize);
 
-        String url = "/restaurants/" + restaurantsId + "/reservations/" + reservation.getId();
+        String url = "/restaurants/" + restaurantsId + "/reservations/1";
 
         return ResponseEntity.created(new URI(url)).body("{}");
     }

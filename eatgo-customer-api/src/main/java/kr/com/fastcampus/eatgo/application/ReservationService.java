@@ -8,9 +8,8 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public class ReservationService {
 
-    public Reservation addReservation(Long restaurantsId, Long userId, String name, String date, String time, Integer partySize) {
-
+    public void addReservation(Long restaurantsId, Long userId, String name,
+                                      String date, String time, Integer partySize) {
         //TODO : 구현 예정
-        return null;
     }
 }
