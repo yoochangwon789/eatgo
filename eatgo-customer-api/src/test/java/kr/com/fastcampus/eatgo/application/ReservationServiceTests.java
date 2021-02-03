@@ -11,8 +11,23 @@ class ReservationServiceTests {
 
     private ReservationService reservationService;
 
+    public void setReservationServiceUp() {
+        reservationService = new ReservationService();
+    }
+
     @Test
     public void addReservation() {
-//        reservationService.addReservation(restaurantsId, userId, name, date, time, partySize);
+        setReservationServiceUp();
+
+        Long restaurantsId = 369L;
+        Long userId = 1004L;
+        String name = "John";
+        String date = "2019-12-25";
+        String time = "20:00";
+        Integer partySize = 20;
+
+        Reservation reservation = reservationService.addReservation(restaurantsId, userId, name, date, time, partySize);
+
+        assertThat(reservation.getName(), is(name));
     }
 }
