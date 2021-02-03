@@ -11,6 +11,6 @@ class ReservationServiceTests {
 
     @Test
     public void addReservation() {
-
+        reservationService.addReservation(restaurantsId, userId, name, date, time, partySize);
     }
 }
