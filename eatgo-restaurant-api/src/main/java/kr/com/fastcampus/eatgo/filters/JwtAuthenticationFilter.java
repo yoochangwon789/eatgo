@@ -1,6 +1,7 @@
 package kr.com.fastcampus.eatgo.filters;
 
 import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.io.IOException;
 import kr.com.fastcampus.eatgo.utils.JwtUtil;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -13,7 +14,6 @@ import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
 
 public class JwtAuthenticationFilter extends BasicAuthenticationFilter {
 
@@ -32,7 +32,7 @@ public class JwtAuthenticationFilter extends BasicAuthenticationFilter {
     protected void doFilterInternal(HttpServletRequest request,
                                     HttpServletResponse response,
                                     FilterChain chain)
-            throws IOException, ServletException {
+            throws IOException, ServletException, java.io.IOException {
         Authentication authentication = getAuthentication(request);
         if (authentication != null) {
             // 실제로 내가 쓰고있는 컨택트를 사용할 수 있게 된다.

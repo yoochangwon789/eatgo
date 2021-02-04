@@ -18,6 +18,6 @@ jwt:
 
 #spring:
 #  profiles:
-#    active: test
-#  datasource:
-#    url: jdbc:h2:mem:test
+#   active: test
+#    datasource:
+#      url: jdbc:h2:mem:test
