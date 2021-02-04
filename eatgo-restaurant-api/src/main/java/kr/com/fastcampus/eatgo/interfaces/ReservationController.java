@@ -19,6 +19,6 @@ public class ReservationController {
 
     @GetMapping("/reservations")
     public String list() {
-
+        return null;
     }
 }
