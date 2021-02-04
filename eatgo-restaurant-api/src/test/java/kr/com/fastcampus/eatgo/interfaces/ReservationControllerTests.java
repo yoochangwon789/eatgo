@@ -31,6 +31,7 @@ class ReservationControllerTests {
                 .header("Authorization", "Bearer" + token))
                 .andExpect(status().isOk());
 
+        // getReservations() 메서드 검증
         verify(reservationService).getReservations(1004L);
     }
 }
