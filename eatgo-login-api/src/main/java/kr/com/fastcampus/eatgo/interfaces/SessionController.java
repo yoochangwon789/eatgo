@@ -32,8 +32,9 @@ public class SessionController {
 
         String url = "/session";
 
-        return ResponseEntity.created(new URI(url)).body(SessionResponseDto.builder()
-                .accessToken(accessToken)
-                .build());
+        return ResponseEntity.created(new URI(url)).body(
+                SessionResponseDto.builder()
+                    .accessToken(accessToken)
+                    .build());
     }
 }
