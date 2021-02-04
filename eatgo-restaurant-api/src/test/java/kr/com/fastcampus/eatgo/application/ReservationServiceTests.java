@@ -26,6 +26,8 @@ class ReservationServiceTests {
 
     @Test
     public void getReservations() {
+        setReservationServiceUp();
+
         Long restaurantId = 1004L;
         List<Reservation> reservations = reservationService.getReservations(restaurantId);
 

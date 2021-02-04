@@ -20,6 +20,6 @@ public class ReservationService {
     }
 
     public List<Reservation> getReservations(Long restaurantId) {
-        return null;
+        return reservationRepository.findAllByRestaurantId(restaurantId);
     }
 }
