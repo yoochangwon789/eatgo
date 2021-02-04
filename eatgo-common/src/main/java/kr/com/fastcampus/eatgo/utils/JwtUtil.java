@@ -15,7 +15,7 @@ public class JwtUtil {
         this.key = Keys.hmacShaKeyFor(secret.getBytes());
     }
 
-    public String createToken(Long userId, String name) {
+    public String createToken(Long userId, String name, Long restaurantId) {
         return Jwts.builder()
                 .claim("userId", userId)
                 .claim("name", name)
